@@ -2,19 +2,14 @@ import nowPlayingMovies from './components/nowPlayingMovies/nowPlayingMovies.js'
 import './theme/index.scss';
 export const state = {
     showingNowPlaying: true,
-    searchInput: "",
+    searchInput: '',
     page: 1,
-    resultsCache: {}
+    resultsCache: {},
 };
 
 window.addEventListener('load', async () => {
-
     try {
-        await nowPlayingMovies(state.page);
-        console.log("hello world");
-
-    } catch (error) {
-
-    }
-
+        await nowPlayingMovies(state.page, state.showingNowPlaying);
+        console.log('hello world');
+    } catch (error) {}
 });

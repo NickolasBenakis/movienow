@@ -5,5 +5,64 @@
 body {
     font-size: 62.5%;
     -webkit-font-smoothing: antialiased;
-    color: $blue;
+    color: black;
+}
+
+section {
+    width: 100%;
+    max-width: 1312px;
+    padding-left: 20px;
+    padding-right: 20px;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+
+.movie-card {
+    position: relative;
+    height: 450px;
+    margin: 10px;
+    cursor: pointer;
+    display: flex;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all .6s ease;
+    z-index: 1;
+    overflow: visible;
+}
+
+.mdl-layout__content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+@media ($lg) {
+    section {
+        padding-left: 3vw !important;
+        padding-right: 3vw !important;
+    }
+
+}
+
+@media ($xs) {
+    section {
+        justify-content: center;
+    }
+}
+
+@media ($sm) {
+
+    .mdl-cell--3-col,
+    .mdl-cell--3-col-tablet.mdl-cell--3-col-tablet {
+        width: calc(50% - 16px);
+    }
 }

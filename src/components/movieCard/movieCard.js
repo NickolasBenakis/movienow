@@ -1,30 +1,28 @@
 /**
- * 
+ *
  * Creates a movieCard element
  * @imagUrl {string} the desired imageUrl.
  * @movieTitle {string} movie Title string
- * @id {number} movie id 
+ * @id {number} movie id
  */
 
 export default (imageUrl, movieTitle, id) => {
     const card = document.createElement('div');
-    card.classList.add("card");
-    card.classList.add(`movieID-${id}`)
-
+    card.classList.add('movie-card');
+    card.classList.add(`movieID-${id}`);
+    card.classList.add(
+        'mdl-card',
+        'mdl-shadow--2dp',
+        'mdl-cell',
+        'mdl-cell--3-col'
+    );
+    card.style.background = `url(${imageUrl}) 50%/cover;`;
     card.innerHTML = `
-    <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="${imageUrl}">
+    <div class="mdl-card__title mdl-card--expand"></div>
+    <div class="mdl-card__actions">
+        <p>${movieTitle}</p>
     </div>
-    <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">
-            ${movieTitle}
-        <i class="material-icons right">more_vert</i></span>
-        <p><a href="#">This is a link</a></p>
-    </div>
-    <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-    </div>`
-    console.log(card)
+    <div class="movie-card__pointer">
+    </div>`;
     return card;
-}
+};

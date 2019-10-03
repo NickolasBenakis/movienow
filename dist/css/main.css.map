@@ -1,1 +1,0 @@
-{"version":3,"sources":["file://C:/Users/benakini/Desktop/movies/movierama2k20/src/theme/index.scss"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc","file":"css/main.css","sourcesContent":["body {\n  font-size: 62.5%;\n  -webkit-font-smoothing: antialiased;\n  color: blue; }\n"],"sourceRoot":""}

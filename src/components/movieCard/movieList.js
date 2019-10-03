@@ -1,13 +1,19 @@
 import movieCard from './movieCard.js';
 import fetchPosterImage from '../../api/fetchPosterImage';
 
-export default (movies) => {
-    const el = document.getElementById('movies');
+export default (movies, nowPlayingMoviesState) => {
+    let rootElement;
+    nowPlayingMoviesState
+        ? (rootElement = document.getElementById('nowPlaying'))
+        : (rootElement = document.getElementById('searchMovies'));
+
     movies.forEach(movie => {
-        //const child = document.createElement('div')
-        const child = movieCard(fetchPosterImage(movie.poster_path), movie.title, movie.id)
+        const child = movieCard(
+            fetchPosterImage(movie.poster_path),
+            movie.title,
+            movie.id
+        );
 
-        el.appendChild(child)
-    })
-
+        rootElement.appendChild(child);
+    });
 };
