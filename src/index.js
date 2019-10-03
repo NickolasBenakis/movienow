@@ -1,4 +1,3 @@
-import movieCard from './components/movieCard/movieCard.js';
 import nowPlayingMovies from './components/nowPlayingMovies/nowPlayingMovies.js';
 import './theme/index.scss';
 export const state = {

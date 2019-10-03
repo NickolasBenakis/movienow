@@ -68,6 +68,7 @@ module.exports = {
     plugins: [
         extractPlugin,
         new HtmlWebpackPlugin({
+            filename: 'index.html',
             template: './index.html'
         })
     ],
