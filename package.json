@@ -6,8 +6,8 @@
     "scripts": {
         "start": "npm run build",
         "test": "jest",
-        "prettier:write": "./node_modules/.bin/prettier --write './src/**/*{.js,.jsx,.scss}'",
-        "prettier:check": "./node_modules/.bin/prettier --check './src/**/*{.js,.jsx,.scss}'",
+        "prettier:write": "./node_modules/.bin/prettier --write './src/**/*{.js,.html,.scss}'",
+        "prettier:check": "./node_modules/.bin/prettier --check './src/**/*{.js,.html,.scss}'",
         "sass": "node-sass -w scss/ -o css/",
         "build": "webpack-dev-server --mode development --open",
         "build:prod": "webpack --mode production"
@@ -25,7 +25,6 @@
         "@babel/preset-env": "^7.5.5",
         "babel-jest": "^24.1.0",
         "babel-loader": "^8.0.5",
-        "bootstrap": "^4.3.1",
         "css-loader": "^0.26.2",
         "eslint": "^5.14.1",
         "extract-text-webpack-plugin": "^2.1.0",
@@ -36,13 +35,14 @@
         "identity-obj-proxy": "^3.0.0",
         "image-webpack-loader": "^4.6.0",
         "infinite-scroll": "^3.0.5",
+        "materialize-css": "^1.0.0-rc.2",
         "mini-css-extract-plugin": "^0.5.0",
+        "prettier": "1.18.2",
         "sass-loader": "^6.0.3",
         "style-loader": "^0.13.2",
         "webpack": "4.20.2",
         "webpack-cli": "^3.2.3",
         "webpack-dev-server": "^3.2.0",
-        "webpack-node-externals": "^1.7.2",
-        "prettier": "1.18.2"
+        "webpack-node-externals": "^1.7.2"
     }
 }

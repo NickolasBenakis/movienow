@@ -18,18 +18,15 @@ module.exports = {
     },
     devtool: 'source-map',
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.js$/,
                 exclude: /(node_modules)/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['@babel/preset-env'],
-                        },
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
                     },
-                ],
+                }, ],
             },
             {
                 test: /\.s?css$/,
