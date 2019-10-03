@@ -1,12 +1,11 @@
 import movieCard from './components/movieCard/movieCard.js';
 import nowPlayingMovies from './components/nowPlayingMovies/nowPlayingMovies.js';
-
+import './theme/index.scss';
 export const state = {
     showingNowPlaying: true,
     searchInput: "",
     page: 1,
-    resultsCache: {},
-    likes: Likes()
+    resultsCache: {}
 };
 
 window.addEventListener('load', async () => {

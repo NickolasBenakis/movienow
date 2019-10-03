@@ -1,20 +1,23 @@
 let path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-let extractPlugin = new MiniCssExtractPlugin({
-    filename: 'main.css',
-    chunkFilename: 'id.css',
-});
-
+// const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const extractPlugin = new MiniCssExtractPlugin({
+    filename: "css/main.css",
+    chunkFilename: "id.css"
+})
 module.exports = {
-    entry: './src/index.js',
+    entry: ["@babel/polyfill", './src/index.js'],
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'js/bundle.js',
         publicPath: '/dist',
         devtoolModuleFilenameTemplate: info =>
             'file://' +
             path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
+    },
+    devServer: {
+        contentBase: "./dist"
     },
     devtool: 'source-map',
     module: {
@@ -30,7 +33,12 @@ module.exports = {
             },
             {
                 test: /\.s?css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+                use: [{
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        publicPath: path.join(__dirname, 'dist')
+                    }
+                }, 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
@@ -58,9 +66,9 @@ module.exports = {
         ],
     },
     plugins: [
+        extractPlugin,
         new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: './index.html',
-        }),
+            template: './index.html'
+        })
     ],
 };
