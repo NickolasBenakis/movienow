@@ -1,14 +1,18 @@
 @import './fonts.scss';
 @import './variables.scss';
+@import './placeholder-card.scss';
+@import './movieCard.scss';
 
 body {
     font-size: 62.5%;
     -webkit-font-smoothing: antialiased;
     color: black;
-    font-family: 'Roboto'
-
+    font-family: 'Roboto';
 }
 
+#main-content.mdl-layout__content {
+    overflow-y: scroll;
+}
 
 section {
     width: 100%;
@@ -20,21 +24,14 @@ section {
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: flex-start;
-    overflow-y: scroll;
-}
 
-.movie-card {
-    position: relative;
-    height: 450px;
-    margin: 10px;
-    cursor: pointer;
-    display: flex;
-    color: black;
-    font-size: 1.2rem;
-    font-weight: 500;
-    transition: all .6s ease;
-    z-index: 1;
-    overflow: visible;
+    @media (max-width: 575.98px) {
+        justify-content: center;
+    }
+
+    @media (min-width: 576px) and (max-width: 767.98px) {
+        justify-content: center;
+    }
 }
 
 .mdl-layout__content {
@@ -47,24 +44,14 @@ section {
     overflow: hidden;
 }
 
-
-
-@media ($lg) {
+@media (min-width: 992px) and (max-width: 1199.98px) {
     section {
         padding-left: 3vw !important;
         padding-right: 3vw !important;
     }
-
 }
 
-@media ($xs) {
-    section {
-        justify-content: center;
-    }
-}
-
-@media ($sm) {
-
+@media (min-width: 576px) and (max-width: 767.98px) {
     .mdl-cell--3-col,
     .mdl-cell--3-col-tablet.mdl-cell--3-col-tablet {
         width: calc(50% - 16px);

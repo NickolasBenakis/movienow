@@ -6,9 +6,11 @@
  * @id {number} movie id
  */
 
+
 export default (imageUrl, movieTitle, id) => {
     const card = document.createElement('div');
     card.classList.add('movie-card');
+    card.style.backgroundImage = imageUrl ? 'url(http://image.tmdb.org/t/p/w300' + imageUrl + ')' : "../assets/icons/blackPlaceHolder.jpg";
     card.classList.add(`movieID-${id}`);
     card.classList.add(
         'mdl-card',
@@ -16,7 +18,6 @@ export default (imageUrl, movieTitle, id) => {
         'mdl-cell',
         'mdl-cell--3-col'
     );
-    card.style.background = `url(${imageUrl}) 50%/cover;`;
     card.innerHTML = `
     <div class="mdl-card__title mdl-card--expand"></div>
     <div class="mdl-card__actions">

@@ -1,0 +1,25 @@
+.movie-card {
+    position: relative;
+    height: 450px;
+    min-width: 300px;
+    margin: 1rem 1rem 1rem 6rem;
+    cursor: pointer;
+    display: flex;
+    color: black;
+    background: black 50%/cover;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all .6s ease;
+    z-index: 1;
+    overflow: visible;
+
+    &:hover {
+        box-shadow: 0 25px 25px rgba(0, 0, 0, 0.19),
+            0 15px 20px rgba(0, 0, 0, 0.23);
+        cursor: pointer;
+    }
+
+    @media (max-width: 575.98px) {
+        margin: 1rem;
+    }
+}
