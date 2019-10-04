@@ -1,12 +1,14 @@
 @import './fonts.scss';
 @import './variables.scss';
 
-
 body {
     font-size: 62.5%;
     -webkit-font-smoothing: antialiased;
     color: black;
+    font-family: 'Roboto'
+
 }
+
 
 section {
     width: 100%;
@@ -44,6 +46,8 @@ section {
     justify-content: center;
     overflow: hidden;
 }
+
+
 
 @media ($lg) {
     section {

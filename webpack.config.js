@@ -48,9 +48,15 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(gif|png|jpe?g|svg)$/i,
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [
-                    'file-loader',
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'assets/[name].[ext]',
+                            publicPath: '../',
+                        },
+                    },
                     {
                         loader: 'image-webpack-loader',
                         options: {
