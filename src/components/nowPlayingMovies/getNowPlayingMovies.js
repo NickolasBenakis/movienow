@@ -1,11 +1,11 @@
 import fetchNowPlayingMovies from '../../api/fetchNowPlayingMovies';
-import movieList from '../movieCard/movieList';
+import createMovieList from '../movieCard/movieList';
+import infinityScroller from '../../utils/infinityScroll';
 
 export default async (pageNumber, nowPlayingMoviesState) => {
     try {
         const movies = await fetchNowPlayingMovies(pageNumber);
-        movieList(movies.results, nowPlayingMoviesState);
-        console.log(movieList(movies.results, nowPlayingMoviesState))
+        return movies;
     } catch (error) {
         console.log(error);
         alert('Sorry there was an error Please reload', error);

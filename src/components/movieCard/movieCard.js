@@ -6,12 +6,13 @@
  * @id {number} movie id
  */
 
-
 export default (imageUrl, movieTitle, id) => {
     const card = document.createElement('div');
     card.classList.add('movie-card');
-    card.style.backgroundImage = imageUrl ? 'url(http://image.tmdb.org/t/p/w300' + imageUrl + ')' : "../assets/icons/blackPlaceHolder.jpg";
-    card.classList.add(`movieID-${id}`);
+    card.style.backgroundImage = imageUrl
+        ? 'url(http://image.tmdb.org/t/p/w300' + imageUrl + ')'
+        : '../assets/icons/blackPlaceHolder.jpg';
+    card.id = `${id}`;
     card.classList.add(
         'mdl-card',
         'mdl-shadow--2dp',

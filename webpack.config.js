@@ -10,7 +10,7 @@ module.exports = {
     entry: ['@babel/polyfill', './src/index.js'],
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'js/bundle.js',
+        filename: 'bundle.js',
         publicPath: '/dist',
         devtoolModuleFilenameTemplate: info =>
             'file://' +
@@ -21,19 +21,23 @@ module.exports = {
     },
     devtool: 'source-map',
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
-                use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env'],
+                        },
                     },
-                }],
+                ],
             },
             {
                 test: /\.s?css$/,
-                use: [{
+                use: [
+                    {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             publicPath: path.join(__dirname, 'dist'),
@@ -45,25 +49,29 @@ module.exports = {
             },
             {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: 'theme/fonts/[name].[ext]',
-                        publicPath: '../'
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'theme/fonts/[name].[ext]',
+                            publicPath: '../',
+                        },
                     },
-                }],
+                ],
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 5000,
-                        quality: 85,
-                        outputPath: 'dist/',
-                    }
-                }]
-            }
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 5000,
+                            quality: 85,
+                            outputPath: 'dist/',
+                        },
+                    },
+                ],
+            },
         ],
     },
     plugins: [
@@ -72,9 +80,11 @@ module.exports = {
             filename: 'index.html',
             template: './index.html',
         }),
-        new CopyPlugin([{
-            from: './src/theme/assets/icons',
-            to: 'theme/icons'
-        }])
+        new CopyPlugin([
+            {
+                from: './src/theme/assets/icons',
+                to: 'theme/icons',
+            },
+        ]),
     ],
 };
