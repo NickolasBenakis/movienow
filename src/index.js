@@ -23,8 +23,11 @@ const nowPlayingMoviesLogic = async () => {
         state.page,
         state.showingNowPlaying
     );
-    const movieList = createMovieList(movies.results, state.showingNowPlaying);
-    const elementToObserveId = movieList[movieList.length - 1].id.toString();
+    const sortedArray = movies.results.sort(
+        (a, b) => b.popularity - a.popularity
+    );
+    const movieList = createMovieList(sortedArray, state.showingNowPlaying);
+    const elementToObserveId = movieList[movieList.length - 2].id.toString();
     const elementToObserve = document.getElementById(elementToObserveId);
 
     infinityScroll(elementToObserve);
