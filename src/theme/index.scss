@@ -24,12 +24,13 @@ section {
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: flex-start;
+    overflow: auto;
 
     @media (max-width: 575.98px) {
         justify-content: center;
     }
 
-    @media (min-width: 576px) and (max-width: 767.98px) {
+    @media (min-width: 576px) and (max-width: 890px) {
         justify-content: center;
     }
 }
@@ -52,6 +53,7 @@ section {
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+
     .mdl-cell--3-col,
     .mdl-cell--3-col-tablet.mdl-cell--3-col-tablet {
         width: calc(50% - 16px);

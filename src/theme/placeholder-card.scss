@@ -21,7 +21,13 @@
     -o-animation: placeHolderSwept 1s infinite linear forwards;
     animation: placeHolderSwept 1s infinite linear forwards;
     background: #ebebec;
-    background-image: linear-gradient(to right, #ebebec 0%, #e0e0e2 20%, #ebebec 40%, #ebebec 100%);
+    background-image: linear-gradient(
+        to right,
+        #ebebec 0%,
+        #e0e0e2 20%,
+        #ebebec 40%,
+        #ebebec 100%
+    );
     background-repeat: no-repeat;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -30,41 +36,41 @@
 
 @-webkit-keyframes placeHolderSwept {
     0% {
-        background-position: -400px 0
+        background-position: -400px 0;
     }
 
     100% {
-        background-position: 400px 0
+        background-position: 400px 0;
     }
 }
 
 @-moz-keyframes placeHolderSwept {
     0% {
-        background-position: -400px 0
+        background-position: -400px 0;
     }
 
     100% {
-        background-position: 400px 0
+        background-position: 400px 0;
     }
 }
 
 @-o-keyframes placeHolderSwept {
     0% {
-        background-position: -400px 0
+        background-position: -400px 0;
     }
 
     100% {
-        background-position: 400px 0
+        background-position: 400px 0;
     }
 }
 
 @keyframes placeHolderSwept {
     0% {
-        background-position: -400px 0
+        background-position: -400px 0;
     }
 
     100% {
-        background-position: 400px 0
+        background-position: 400px 0;
     }
 }
 

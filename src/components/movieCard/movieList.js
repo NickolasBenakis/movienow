@@ -20,6 +20,8 @@ export default (movies, nowPlayingMoviesState) => {
     // });
     // console.log(list.container);
     // rootElement.appendChild(list.container);
+    const sectionHeight = rootElement.getBoundingClientRect().height;
+    console.log(sectionHeight);
     const moviesArray = movies.map(movie => {
         const child = movieCard(movie.poster_path, movie.title, movie.id);
         rootElement.appendChild(child);

@@ -10,7 +10,9 @@ export default (imageUrl, movieTitle, id) => {
     const card = document.createElement('div');
     card.classList.add('movie-card');
     card.style.backgroundImage = imageUrl
-        ? 'url(http://image.tmdb.org/t/p/w300' + imageUrl + ')'
+        ? 'url(https://res.cloudinary.com/nickolasben/image/fetch/q_auto,fl_lossy,f_auto,dpr_auto,w_auto/http://image.tmdb.org/t/p/w400' +
+          imageUrl +
+          ')'
         : '../assets/icons/blackPlaceHolder.jpg';
     card.id = `${id}`;
     card.classList.add(

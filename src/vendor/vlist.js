@@ -32,7 +32,7 @@
 export function VirtualList(config) {
     var width = (config && config.w + 'px') || '100%';
     var height = (config && config.h + 'px') || '100%';
-    var itemHeight = this.itemHeight = config.itemHeight;
+    var itemHeight = (this.itemHeight = config.itemHeight);
 
     this.items = config.items;
     this.generatorFn = config.generatorFn;
@@ -54,7 +54,7 @@ export function VirtualList(config) {
 
     // As soon as scrolling has stopped, this interval asynchronouslyremoves all
     // the nodes that are not used anymore
-    this.rmNodeInterval = setInterval(function () {
+    this.rmNodeInterval = setInterval(function() {
         if (Date.now() - lastScrolled > 100) {
             var badNodes = document.querySelectorAll('[data-rm="1"]');
             for (var i = 0, l = badNodes.length; i < l; i++) {
@@ -78,10 +78,9 @@ export function VirtualList(config) {
     this.container.addEventListener('scroll', onScroll);
 }
 
-VirtualList.prototype.createRow = function (i) {
+VirtualList.prototype.createRow = function(i) {
     var item;
-    if (this.generatorFn)
-        item = this.generatorFn(i);
+    if (this.generatorFn) item = this.generatorFn(i);
     else if (this.items) {
         if (typeof this.items[i] === 'string') {
             var itemText = document.createTextNode(this.items[i]);
@@ -95,7 +94,7 @@ VirtualList.prototype.createRow = function (i) {
 
     item.classList.add('vrow');
     item.style.position = 'absolute';
-    item.style.top = (i * this.itemHeight) + 'px';
+    item.style.top = i * this.itemHeight + 'px';
     return item;
 };
 
@@ -109,10 +108,9 @@ VirtualList.prototype.createRow = function (i) {
  * @param {Number} from Starting position, i.e. first children index.
  * @return {void}
  */
-VirtualList.prototype._renderChunk = function (node, from) {
+VirtualList.prototype._renderChunk = function(node, from) {
     var finalItem = from + this.cachedItemsLen;
-    if (finalItem > this.totalRows)
-        finalItem = this.totalRows;
+    if (finalItem > this.totalRows) finalItem = this.totalRows;
 
     // Append all the new rows in a document fragment that we will later append to
     // the parent node
@@ -129,7 +127,7 @@ VirtualList.prototype._renderChunk = function (node, from) {
     node.appendChild(fragment);
 };
 
-VirtualList.createContainer = function (w, h) {
+VirtualList.createContainer = function(w, h) {
     var c = document.createElement('div');
     c.style.width = w;
     c.style.height = h;
@@ -140,7 +138,7 @@ VirtualList.createContainer = function (w, h) {
     return c;
 };
 
-VirtualList.createScroller = function (h) {
+VirtualList.createScroller = function(h) {
     var scroller = document.createElement('div');
     scroller.style.opacity = 0;
     scroller.style.position = 'absolute';

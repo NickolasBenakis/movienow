@@ -1,8 +1,9 @@
 import getNowPlayingMovies from './components/nowPlayingMovies/getNowPlayingMovies.js';
-import infinityScroll from './utils/infinityScroll';
+import elementObserver from './utils/elementObserver';
 import createMovieList from './components/movieCard/movieList';
 import './theme/index.scss';
 import _ from 'lodash';
+import { virtualScrollDriver } from 'dynamic-virtual-scroll';
 
 export const state = {
     showingNowPlaying: true,
@@ -30,7 +31,7 @@ const nowPlayingMoviesLogic = async () => {
     const elementToObserveId = movieList[movieList.length - 2].id.toString();
     const elementToObserve = document.getElementById(elementToObserveId);
 
-    infinityScroll(elementToObserve);
+    elementObserver(elementToObserve);
     window.addEventListener(
         'scroll',
         _.throttle(async () => {

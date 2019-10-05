@@ -1,5 +1,5 @@
 export default () => {
-    return output = `
+    return (output = `
     <div class="container">
         <div class="content">
             <div class="line line__1"></div>
@@ -12,5 +12,5 @@ export default () => {
             <div class="line line__8"></div>
             <div class="circle"></div>
         </div>
-    </div>`
-}
+    </div>`);
+};

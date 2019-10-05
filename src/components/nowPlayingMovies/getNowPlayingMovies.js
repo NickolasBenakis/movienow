@@ -1,6 +1,6 @@
 import fetchNowPlayingMovies from '../../api/fetchNowPlayingMovies';
 import createMovieList from '../movieCard/movieList';
-import infinityScroller from '../../utils/infinityScroll';
+import infinityScroller from '../../utils/elementObserver';
 
 export default async (pageNumber, nowPlayingMoviesState) => {
     try {
