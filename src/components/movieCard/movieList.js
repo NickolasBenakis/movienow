@@ -9,11 +9,8 @@ export default (movies, nowPlayingMoviesState) => {
         : (rootElement = document.getElementById('searchMovies'));
 
     const moviesArray = movies.map(movie => {
-        const child = movieCard(movie.poster_path, movie.title, movie.id);
+        const child = movieCard(movie);
         return child;
-        //render(child, rootElement);
-        //rootElement.appendChild(child);
-        //return child;
     });
     render(moviesArray, rootElement);
     return moviesArray;

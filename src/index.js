@@ -4,6 +4,7 @@ import createMovieList from './components/movieCard/movieList';
 import './theme/index.scss';
 import _ from 'lodash';
 import { setState } from './utils/setState';
+import cacheGenres from './utils/cacheGenres';
 export const state = {
     showingNowPlaying: true,
     elementObserved: false,
@@ -16,6 +17,7 @@ export const state = {
 
 window.addEventListener('load', async () => {
     if (state.showingNowPlaying) {
+        cacheGenres();
         nowPlayingMoviesLogic();
     }
 });

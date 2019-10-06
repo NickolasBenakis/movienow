@@ -1,4 +1,5 @@
 import { html, render } from 'lit-html';
+import { getGenres } from '../../api/fetchGenres';
 /**
  *
  * Creates a movieCard element
@@ -7,25 +8,45 @@ import { html, render } from 'lit-html';
  * @id {number} movie id
  */
 
-export default (imageUrl, movieTitle, id) => {
-    const backgroundImage = imageUrl
-        ? `url(http://image.tmdb.org/t/p/w300${imageUrl})`
+export default movie => {
+    const backgroundUrl = movie.poster_path;
+    const image = backgroundUrl
+        ? `url(https://res.cloudinary.com/nickolasben/image/fetch/q_60,fl_lossy,f_auto,dpr_auto,w_auto/http://image.tmdb.org/t/p/w500${backgroundUrl})`
         : '';
-    return template(id, movieTitle, backgroundImage);
+    return template(
+        movie.id,
+        movie.title,
+        image,
+        movie.vote_average,
+        movie.release_date.substring(0, 4),
+        movie.genre_ids,
+        movie.overview
+    );
 };
 
-function template(id, movieTitle, image) {
+function template(id, movieTitle, image, vote, year, genre_ids, overview) {
     return html`
         <div
             id="${id}"
             class="movie-card mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col"
             style="background-image:${image};"
-            <div
-            class="mdl-card__title mdl-card--expand"
         >
+            <div class=" mdl-card--expand"></div>
             <div class="mdl-card__actions">
-                <p>${movieTitle}</p>
+                <p class="mdl-card__title">${movieTitle}</p>
+                <p class="mdl-card__meta">
+                    <span class="mdl-card__meta__year">${year}</span>
+                    <span class="mdl-card__meta__rating">${vote}/10</span>
+                </p>
+                <p class="mdl-card__genres">
+                    ${getGenres(genre_ids).join(',')}
+                </p>
+                <p class="mdl-card__overview">
+                    ${overview}
+                </p>
             </div>
+            <div class="mdl-card__more"></div>
+
             <div class="movie-card__pointer"></div>
         </div>
     `;

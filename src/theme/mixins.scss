@@ -1,0 +1,19 @@
+@mixin font-size-xs {
+    font-size: 1rem;
+}
+
+@mixin font-size-sm {
+    font-size: 1.2rem;
+}
+
+@mixin font-size-md {
+    font-size: 1.4rem;
+}
+
+@mixin font-size-lg {
+    font-size: 1.6rem;
+}
+
+@mixin font-size-xl {
+    font-size: 2.4rem;
+}

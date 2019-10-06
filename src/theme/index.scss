@@ -2,6 +2,7 @@
 @import './variables.scss';
 @import './placeholder-card.scss';
 @import './movieCard.scss';
+@import './mixins.scss';
 
 body {
     font-size: 62.5%;
@@ -42,16 +43,18 @@ section {
     -ms-flex-pack: center;
     justify-content: center;
     overflow: hidden;
+
 }
 
 // @media (min-width: 992px) and (max-width: 1199.98px) {
-    //     section {
-    //         padding-left: 3vw !important;
-    //         padding-right: 3vw !important;
-    //     }
-    // }
+//     section {
+//         padding-left: 3vw !important;
+//         padding-right: 3vw !important;
+//     }
+// }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+
     .mdl-cell--3-col,
     .mdl-cell--3-col-tablet.mdl-cell--3-col-tablet {
         width: calc(50% - 16px);
