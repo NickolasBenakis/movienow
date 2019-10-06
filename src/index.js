@@ -26,8 +26,10 @@ const nowPlayingMoviesLogic = async () => {
         state.showingNowPlaying
     );
     setState('onlineMoviesCache', results);
-    const movieList = createMovieList(results, state.showingNowPlaying);
-    console.log(movieList);
+    const movieList = createMovieList(
+        state.onlineMoviesCache,
+        state.showingNowPlaying
+    );
     const elementToObserve = document.getElementById(
         movieList[movieList.length - 2] &&
             movieList[movieList.length - 2].values[0] &&

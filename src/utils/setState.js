@@ -11,9 +11,9 @@ export const setState = (propertyName, value) => {
         case 'searchMoviesCache':
         case 'onlineMoviesCache':
             state[propertyName.toString()].push(value);
-            state[propertyName.toString()] = state[
+            return (state[propertyName.toString()] = state[
                 propertyName.toString()
-            ].flat();
+            ].flat());
         default:
             return (state[propertyName.toString()] = value);
     }

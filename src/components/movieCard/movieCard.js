@@ -11,7 +11,6 @@ export default (imageUrl, movieTitle, id) => {
     const backgroundImage = imageUrl
         ? `url(http://image.tmdb.org/t/p/w300${imageUrl})`
         : '';
-    console.log(backgroundImage);
     return template(id, movieTitle, backgroundImage);
 };
 
