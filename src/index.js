@@ -1,15 +1,17 @@
 import getNowPlayingMovies from './components/nowPlayingMovies/getNowPlayingMovies.js';
-import infinityScroll from './utils/infinityScroll';
+import ObserveElement from './utils/ObserveElement';
 import createMovieList from './components/movieCard/movieList';
 import './theme/index.scss';
 import _ from 'lodash';
-
+import { setState } from './utils/setState';
 export const state = {
     showingNowPlaying: true,
     elementObserved: false,
     searchInput: '',
-    page: 1,
-    resultsCache: {},
+    onlinePage: 1,
+    searchPage: 1,
+    searchMoviesCache: [],
+    onlineMoviesCache: [],
 };
 
 window.addEventListener('load', async () => {
@@ -19,23 +21,23 @@ window.addEventListener('load', async () => {
 });
 
 const nowPlayingMoviesLogic = async () => {
-    const movies = await getNowPlayingMovies(
-        state.page,
+    const results = await getNowPlayingMovies(
+        state.onlinePage,
         state.showingNowPlaying
     );
-    const sortedArray = movies.results.sort(
-        (a, b) => b.popularity - a.popularity
+    setState('onlineMoviesCache', results);
+    const movieList = createMovieList(results, state.showingNowPlaying);
+    const elementToObserve = document.getElementById(
+        movieList[movieList.length - 2] &&
+            movieList[movieList.length - 2].id &&
+            movieList[movieList.length - 2].id.toString()
     );
-    const movieList = createMovieList(sortedArray, state.showingNowPlaying);
-    const elementToObserveId = movieList[movieList.length - 2].id.toString();
-    const elementToObserve = document.getElementById(elementToObserveId);
-
-    infinityScroll(elementToObserve);
+    ObserveElement(elementToObserve);
     window.addEventListener(
         'scroll',
-        _.throttle(async () => {
+        _.debounce(async () => {
             if (state.elementObserved) {
-                state.page++;
+                state.onlinePage++;
                 state.elementObserved = false;
                 await nowPlayingMoviesLogic();
             }

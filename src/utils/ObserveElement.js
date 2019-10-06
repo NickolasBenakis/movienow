@@ -14,7 +14,7 @@ export default targetElement => {
     };
     const callback = (entries, observer) => {
         entries.forEach(entry => {
-            if (entry.intersectionRatio > 0.75) {
+            if (entry.intersectionRatio >= 1) {
                 console.log('to vrika');
                 state.elementObserved = true;
                 observer.disconnect();
