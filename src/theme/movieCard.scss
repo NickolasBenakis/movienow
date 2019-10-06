@@ -46,7 +46,7 @@
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column;
-        font-size: 16px;
+        font-size: 1.6rem;
         transition: all ease-in-out;
         transition-duration: 0.8s;
 
@@ -95,7 +95,7 @@
         }
 
         &__title {
-            font-size: 1.2rem;
+            font-size: 1.8rem;
             padding: 0;
             color: $white;
         }
@@ -108,7 +108,7 @@
         }
 
         &__genres {
-            font-size: 1rem;
+            font-size: 1.4rem;
             color: hsla(0, 0%, 100%, .6);
             width: 100%;
             padding: 4px 0;
@@ -118,7 +118,7 @@
 
         &__overview {
             padding-top: 4px;
-            font-size: .9rem;
+            font-size: 1.4rem;
             overflow: hidden;
             max-height: 45px;
         }

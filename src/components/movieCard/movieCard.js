@@ -45,7 +45,22 @@ function template(id, movieTitle, image, vote, year, genre_ids, overview) {
                     ${overview}
                 </p>
             </div>
-            <div class="mdl-card__more"></div>
+            <div class="mdl-card__more">
+                <svg
+                    width="120"
+                    height="55"
+                    viewBox="-2.5 -5 75 60"
+                    preserveAspectRatio="none"
+                >
+                    <path
+                        d="M0,0 l35,50 l35,-50"
+                        fill="none"
+                        stroke="black"
+                        stroke-linecap="round"
+                        stroke-width="5"
+                    />
+                </svg>
+            </div>
 
             <div class="movie-card__pointer"></div>
         </div>
