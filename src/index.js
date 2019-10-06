@@ -27,11 +27,13 @@ const nowPlayingMoviesLogic = async () => {
     );
     setState('onlineMoviesCache', results);
     const movieList = createMovieList(results, state.showingNowPlaying);
+    console.log(movieList);
     const elementToObserve = document.getElementById(
         movieList[movieList.length - 2] &&
-            movieList[movieList.length - 2].id &&
-            movieList[movieList.length - 2].id.toString()
+            movieList[movieList.length - 2].values[0] &&
+            movieList[movieList.length - 2].values[0].toString()
     );
+    console.log(elementToObserve);
     ObserveElement(elementToObserve);
     window.addEventListener(
         'scroll',

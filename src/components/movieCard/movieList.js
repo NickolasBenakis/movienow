@@ -1,5 +1,6 @@
 import movieCard from './movieCard.js';
 import { VirtualList } from '../../vendor/vlist.js';
+import { html, render } from 'lit-html';
 
 export default (movies, nowPlayingMoviesState) => {
     let rootElement;
@@ -9,8 +10,11 @@ export default (movies, nowPlayingMoviesState) => {
 
     const moviesArray = movies.map(movie => {
         const child = movieCard(movie.poster_path, movie.title, movie.id);
-        rootElement.appendChild(child);
         return child;
+        //render(child, rootElement);
+        //rootElement.appendChild(child);
+        //return child;
     });
+    render(moviesArray, rootElement);
     return moviesArray;
 };
