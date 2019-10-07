@@ -8,8 +8,15 @@ html,
 body {
     font-size: 62.5%;
     -webkit-font-smoothing: antialiased;
-    color: black;
+    color: $white;
     font-family: 'Roboto';
+    background: #ece9e6; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #ece9e6,
+        #ffffff
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ece9e6, #ffffff);
 }
 
 #main-content.mdl-layout__content {
@@ -31,7 +38,7 @@ section {
         justify-content: center;
     }
 
-    @media (min-width: 576px) and (max-width: 767.98px) {
+    @media (min-width: 576px) and (max-width: 1090px) {
         justify-content: center;
     }
 }
@@ -44,21 +51,16 @@ section {
     -ms-flex-pack: center;
     justify-content: center;
     overflow: hidden;
-
 }
 
 .mdl-layout__header-row {
-    background: $cyan;
-
     .mdl-layout-title {
         font-size: 2rem;
-
     }
 
     .mdl-navigation {
         &__link {
             font-size: 2rem;
-
         }
     }
 }
@@ -67,6 +69,20 @@ section {
     left: unset;
     right: 0;
 
+    &__container {
+        max-height: 100%;
+    }
+    &__header {
+        background-color: transparent;
+        transition: all 0.4s ease-in-out;
+        color: $cyan;
+        box-shadow: unset;
+        &-row {
+            .mdl-navigation__link {
+                color: inherit;
+            }
+        }
+    }
     &__drawer {
         left: unset;
         right: 0;
@@ -82,9 +98,16 @@ section {
 #custom-layout {
     .mdl-layout__header .mdl-layout__drawer-button {
         background-color: unset;
+        color: inherit;
     }
 }
 
+.colorfull {
+    background-color: $cyan;
+    color: $white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
 
 .mdl-layout__drawer.is-visible {
     transition: all 0.5s;
@@ -95,11 +118,6 @@ section {
     -webkit-transform: translateX(0);
 }
 
-.mdl-layour__drawer {
-    // visibility: hidden;
-}
-
-
 @-webkit-keyframes open_drawer {
     to {
         -webkit-transform: translateX(-0px);
@@ -107,7 +125,6 @@ section {
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
-
     .mdl-cell--3-col,
     .mdl-cell--3-col-tablet.mdl-cell--3-col-tablet {
         width: calc(50% - 16px);
