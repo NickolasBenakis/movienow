@@ -1,6 +1,6 @@
 import movieCard from './movieCard.js';
-import { VirtualList } from '../../vendor/vlist.js';
 import { html, render } from 'lit-html';
+import dialogTemplate from '../dialog/dialog';
 
 export default (movies, nowPlayingMoviesState) => {
     let rootElement;
@@ -12,6 +12,8 @@ export default (movies, nowPlayingMoviesState) => {
         const child = movieCard(movie);
         return child;
     });
+    // const dialogTpl = dialogTemplate();
+    // render(dialogTpl, document.querySelector('#dialog-container'));
     render(moviesArray, rootElement);
     return moviesArray;
 };

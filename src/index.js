@@ -3,10 +3,10 @@ import ObserveElement from './utils/ObserveElement';
 import createMovieList from './components/movieCard/movieList';
 import './theme/index.scss';
 import _ from 'lodash';
-import {
-    setState
-} from './utils/setState';
+import { setState } from './utils/setState';
 import cacheGenres from './utils/cacheGenres';
+// import { render } from 'lit-html';
+// import { dialog } from './components/dialog/dialog';
 export const state = {
     showingNowPlaying: true,
     elementObserved: false,
@@ -36,15 +36,15 @@ const nowPlayingMoviesLogic = async () => {
     );
     const elementToObserve = document.getElementById(
         movieList[movieList.length - 2] &&
-        movieList[movieList.length - 2].values[0] &&
-        movieList[movieList.length - 2].values[0].toString()
+            movieList[movieList.length - 2].values[0] &&
+            movieList[movieList.length - 2].values[0].toString()
     );
     console.log(elementToObserve);
     ObserveElement(elementToObserve);
     window.addEventListener(
         'scroll',
         _.throttle(() => {
-            applyColorToHeader("colorfull");
+            applyColorToHeader('colorfull');
             if (state.elementObserved) {
                 state.onlinePage++;
                 state.elementObserved = false;
@@ -55,15 +55,13 @@ const nowPlayingMoviesLogic = async () => {
     );
 };
 
-
-const applyColorToHeader = (className) => {
+const applyColorToHeader = className => {
     const rootElement = document.querySelector('#header');
     const sectionElement = document.querySelector('#main-content');
     if (sectionElement.scrollTop === 0) {
         if (rootElement.classList.contains(className))
             rootElement.classList.remove(className);
-
-    } else if (sectionElement.scrollTop > 50) {
+    } else if (sectionElement.scrollTop > 15) {
         rootElement.classList.add(className);
     }
-}
+};

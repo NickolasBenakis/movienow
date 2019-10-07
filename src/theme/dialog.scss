@@ -1,0 +1,57 @@
+.custom-dialog {
+    color: $white;
+    position: relative;
+    max-height: 520px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    z-index: 50;
+    overflow: hidden;
+    background-position: 100%;
+    background-size: contain;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: height .3s ease;
+
+    &__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 3rem;
+        padding: 24px 8px;
+        cursor: pointer;
+        z-index: 1;
+        color: $black;
+
+        // span {
+   //     display: block;
+   //     border-bottom: 2px solid #fff;
+   //     width: 32px;
+
+   //     &:first-of-type {
+   //         -webkit-transform: rotate(45deg) translateX(1px);
+   //         transform: rotate(45deg) translateX(1px);
+   //     }
+
+   //     &:last-of-type {
+   //         -webkit-transform: rotate(-45deg) translateX(1px);
+   //         transform: rotate(-45deg) translateX(1px);
+   //     }
+   // }
+    }
+}
+
+.is-open {
+    height: 450px;
+    visibility: visible;
+    opacity: 1;
+}
+
+.mdl-dialog {
+    width: 100%;
+}
