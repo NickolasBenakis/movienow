@@ -22,6 +22,7 @@ export default movie => {
         movie.id,
         movie.title,
         image,
+        hdImage,
         movie.vote_average,
         movie.release_date.substring(0, 4),
         movie.genre_ids,
@@ -29,14 +30,30 @@ export default movie => {
     );
 };
 
-function template(id, movieTitle, image, vote, year, genre_ids, overview) {
+function template(
+    id,
+    movieTitle,
+    image,
+    hdImage,
+    vote,
+    year,
+    genre_ids,
+    overview
+) {
     return html`
         <div
             id="${id}"
             class="movie-card mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col"
             style="background-image:${image};"
             @click=${() => {
-                renderModal(image);
+                renderModal(
+                    hdImage,
+                    movieTitle,
+                    year,
+                    vote,
+                    getGenres(genre_ids),
+                    overview
+                );
                 handleExpand();
             }}
         >
@@ -48,7 +65,7 @@ function template(id, movieTitle, image, vote, year, genre_ids, overview) {
                     <span class="mdl-card__meta__rating">${vote}/10</span>
                 </p>
                 <p class="mdl-card__genres">
-                    ${getGenres(genre_ids).join(',')}
+                    ${getGenres(genre_ids).join('∙')}
                 </p>
                 <p class="mdl-card__overview">
                     ${overview}

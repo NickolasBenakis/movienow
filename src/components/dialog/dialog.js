@@ -1,6 +1,6 @@
 import { html, render } from 'lit-html';
 
-export const dialogTemplate = image => {
+export const dialogTemplate = (image, title, year, vote, genres, overview) => {
     return html`
         <div
             class="mdl-dialog custom-dialog"
@@ -13,12 +13,41 @@ export const dialogTemplate = image => {
                     >close
                 </i>
             </div>
-            <div class="mdl-dialog__content">
-                <p>
-                    Allow this site to collect usage data to improve your
-                    experience?
-                </p>
+            <div class="custom-dialog__tabs md-light">
+                <span class="overview active" @click=${showTab}>Overview</span>
+                <span class="trailer" @click=${showTab}>Trailer</span>
+                <span class="similar" @click=${showTab}>Similar</span>
+                <span class="reviews" @click=${showTab}>Reviews</span>
             </div>
+            <div class="mdl-dialog__content custom-dialog__container md-light">
+                <div class="custom-dialog__overview-tab active">
+                    <h1 class="custom-dialog__title">
+                        ${title}
+                    </h1>
+                    <p class="custom-dialog__meta">
+                        <span class="custom-dialog__meta__year">${year}</span>
+                        <span class="custom-dialog__meta__rating">
+                            ${vote + '/10'}
+                        </span>
+                    </p>
+                    <p class="custom-dialog__genres">
+                        ${genres.join(' ∙ ')}
+                    </p>
+                    <p class="custom-dialog__overview">
+                        ${overview}
+                    </p>
+                </div>
+                <div class="custom-dialog__trailer-tab">
+                    <p>Giannis</p>
+                </div>
+                <div class="custom-dialog__similar-tab">
+                    <p>Nikos</p>
+                </div>
+                <div class="custom-dialog__reviews-tab">
+                    <p>Skata</p>
+                </div>
+            </div>
+
             <div
                 class="mdl-dialog__actions mdl-dialog__actions--full-width"
             ></div>
@@ -37,9 +66,48 @@ export const handleExpand = () => {
     dialog.classList.add('is-open');
 };
 
-export const renderModal = image => {
-    const dialogTpl = dialogTemplate(image);
+export const renderModal = (image, title, year, vote, genres, overview) => {
+    const dialogTpl = dialogTemplate(
+        image,
+        title,
+        year,
+        vote,
+        genres,
+        overview
+    );
     render(dialogTpl, document.querySelector('#dialog-container'));
+};
+
+export const showTab = e => {
+    const allNavItems = Array.from(e.target.parentElement.children);
+    const allTabItems = Array.from(
+        document.querySelector('.mdl-dialog__content').children
+    );
+    const navItem = e.target;
+    const tabItem = document.querySelector(
+        `.custom-dialog__${navItem.innerHTML.toLowerCase()}-tab`
+    );
+    switch (navItem.innerHTML.toLowerCase()) {
+        case 'overview':
+        case 'trailer':
+        case 'similar':
+        case 'reviews':
+            allTabItems.map(el => {
+                if (el.classList.contains('active')) {
+                    el.classList.remove('active');
+                }
+            });
+            allNavItems.map(el => {
+                if (el.classList.contains('active')) {
+                    el.classList.remove('active');
+                }
+            });
+            tabItem.classList.add('active');
+            navItem.classList.add('active');
+            break;
+        default:
+            break;
+    }
 };
 // gia eksw apo to modal
 // () => {

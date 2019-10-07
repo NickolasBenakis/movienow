@@ -17,6 +17,7 @@
     visibility: hidden;
     opacity: 0;
     transition: height .3s ease;
+    box-shadow: 0 1.5rem 4rem rgba(23, 24, 24, 0.15);
 
     &__close {
         position: absolute;
@@ -27,23 +28,107 @@
         cursor: pointer;
         z-index: 1;
         color: $black;
-
-        // span {
-   //     display: block;
-   //     border-bottom: 2px solid #fff;
-   //     width: 32px;
-
-   //     &:first-of-type {
-   //         -webkit-transform: rotate(45deg) translateX(1px);
-   //         transform: rotate(45deg) translateX(1px);
-   //     }
-
-   //     &:last-of-type {
-   //         -webkit-transform: rotate(-45deg) translateX(1px);
-   //         transform: rotate(-45deg) translateX(1px);
-   //     }
-   // }
     }
+
+    &__container {
+
+        background: linear-gradient(90deg, #000 50%, transparent);
+        width: 50%;
+        padding-top: 3rem;
+        height: 100%;
+        padding-left: 5rem;
+
+        @media only screen and (max-width:74em) {
+            background: linear-gradient(90deg, #000 40%, rgba(0, 0, 0, 0.733), transparent);
+            width: 88%;
+        }
+
+        @media only screen and (max-width: 61.25em) {
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.966) 30%, transparent);
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 37.5em) {
+            padding-top: 1rem;
+            padding-left: 1rem;
+        }
+    }
+
+    &__title {
+        font-size: 4rem;
+
+    }
+
+    &__meta {
+
+        &__year {
+            font-size: 1.6rem;
+            padding: 0 8px;
+        }
+
+        &__rating {
+            font-size: 1.6rem;
+            padding: 0 8px;
+            color: $green;
+        }
+    }
+
+    &__genres {
+        font-size: 1.6rem;
+        padding: 0 8px;
+        white-space: nowrap;
+    }
+
+
+    &__tabs {
+        bottom: 0;
+        width: 100%;
+        position: absolute;
+        -ms-flex-item-align: center;
+        height: 3rem;
+        z-index: 1;
+        font-size: 1.6rem;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+
+        span {
+            font-size: 1.8rem;
+            margin: 0 2rem 0 0;
+            cursor: pointer;
+
+            &.active {
+                border-bottom: 5px solid $green;
+
+            }
+        }
+    }
+
+    &__overview {
+        font-size: 1.4rem;
+        padding: 0 8px;
+    }
+
+    &__overview-tab,
+    &__trailer-tab,
+    &__reviews-tab,
+    &__similar-tab {
+        transition: transform .3s ease;
+        -webkit-transform: .3s ease;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    &__overview-tab.active,
+    &__trailer-tab.active,
+    &__reviews-tab.active,
+    &__similar-tab.active {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+    }
+
 }
 
 .is-open {
