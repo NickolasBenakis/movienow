@@ -13,7 +13,7 @@ import { dialogTemplate, handleExpand, renderModal } from '../dialog/dialog';
 export default movie => {
     const backgroundUrl = movie.poster_path;
     const image = backgroundUrl
-        ? `url(https://res.cloudinary.com/nickolasben/image/fetch/q_60,fl_lossy,f_auto,dpr_auto,w_auto/http://image.tmdb.org/t/p/w500${backgroundUrl})`
+        ? `url(https://res.cloudinary.com/nickolasben/image/fetch/q_60,fl_lossy,f_auto,dpr_auto,w_auto/http://image.tmdb.org/t/p/w400${backgroundUrl})`
         : 'grey';
     const hdImage = backgroundUrl
         ? `url(https://res.cloudinary.com/nickolasben/image/fetch/q_60,fl_lossy,f_auto,dpr_auto,w_auto/http://image.tmdb.org/t/p/original${backgroundUrl})`
@@ -47,6 +47,7 @@ function template(
             style="background-image:${image};"
             @click=${() => {
                 renderModal(
+                    id,
                     hdImage,
                     movieTitle,
                     year,

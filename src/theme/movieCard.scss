@@ -17,10 +17,9 @@
     overflow: visible;
 
     &:hover {
-        box-shadow: 0 25px 25px rgba(0, 0, 0, 0.19),
+        box-shadow: 0 25px 25px rgba(0, 0, 0, 0.5),
             0 15px 20px rgba(0, 0, 0, 0.23);
         cursor: pointer;
-        transform: scale(1.01);
 
         .mdl-card__actions {
             height: 200px;

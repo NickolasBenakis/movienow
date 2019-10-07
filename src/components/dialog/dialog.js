@@ -1,6 +1,14 @@
 import { html, render } from 'lit-html';
-
-export const dialogTemplate = (image, title, year, vote, genres, overview) => {
+import fetchTrailer from '../../api/fetchTrailer';
+export const dialogTemplate = (
+    id,
+    image,
+    title,
+    year,
+    vote,
+    genres,
+    overview
+) => {
     return html`
         <div
             class="mdl-dialog custom-dialog"
@@ -38,7 +46,7 @@ export const dialogTemplate = (image, title, year, vote, genres, overview) => {
                     </p>
                 </div>
                 <div class="custom-dialog__trailer-tab">
-                    <p>Giannis</p>
+                    <p>${displayTrailer(id)}</p>
                 </div>
                 <div class="custom-dialog__similar-tab">
                     <p>Nikos</p>
@@ -66,8 +74,9 @@ export const handleExpand = () => {
     dialog.classList.add('is-open');
 };
 
-export const renderModal = (image, title, year, vote, genres, overview) => {
+export const renderModal = (id, image, title, year, vote, genres, overview) => {
     const dialogTpl = dialogTemplate(
+        id,
         image,
         title,
         year,
@@ -107,6 +116,23 @@ export const showTab = e => {
             break;
         default:
             break;
+    }
+};
+
+export const displayTrailer = async movieID => {
+    try {
+        const res = await fetchTrailer(movieID);
+        if (
+            res !== undefined &&
+            res.results !== undefined &&
+            res.results.length !== 0 &&
+            res.results[0].key !== undefined &&
+            res.results[0].key !== null
+        ) {
+            return setTrailerURLtoIFRAME(res.results[0].key, movieID);
+        }
+    } catch (err) {
+        throw Error(err);
     }
 };
 // gia eksw apo to modal
