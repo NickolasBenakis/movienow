@@ -178,3 +178,24 @@ section {
 .md-light {
     color: rgba(255, 255, 255, 1);
 }
+
+.active {
+    display: block ;
+} 
+
+#spinner.mdl-spinner {
+    position: sticky;
+    width: 100px;
+    height: 100px;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    // transition: 0.2s all;
+
+    
+}
+
+#spinner.is-active {
+    opacity: 1;
+}

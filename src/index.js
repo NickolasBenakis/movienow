@@ -5,8 +5,8 @@ import './theme/index.scss';
 import _ from 'lodash';
 import { setState } from './utils/setState';
 import cacheGenres from './utils/cacheGenres';
-// import { render } from 'lit-html';
-// import { dialog } from './components/dialog/dialog';
+import appRouting from './components/appRouting.js';
+import {loadSpinner, removeSpinner} from './components/spinner/spinner'
 export const state = {
     showingNowPlaying: true,
     elementObserved: false,
@@ -18,8 +18,10 @@ export const state = {
 };
 
 window.addEventListener('load', async () => {
+    appRouting();
     if (state.showingNowPlaying) {
         cacheGenres();
+        loadSpinner();
         nowPlayingMoviesLogic();
     }
 });
@@ -29,6 +31,7 @@ const nowPlayingMoviesLogic = async () => {
         state.onlinePage,
         state.showingNowPlaying
     );
+    removeSpinner();
     setState('onlineMoviesCache', results);
     const movieList = createMovieList(
         state.onlineMoviesCache,
@@ -48,6 +51,7 @@ const nowPlayingMoviesLogic = async () => {
             if (state.elementObserved) {
                 state.onlinePage++;
                 state.elementObserved = false;
+                loadSpinner();
                 nowPlayingMoviesLogic();
             }
         }),
