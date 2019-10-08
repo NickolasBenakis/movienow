@@ -1,7 +1,7 @@
 import { html, render } from 'lit-html';
 import { getGenres } from '../../api/fetchGenres';
-import { dialogTemplate, handleExpand, renderModal } from '../dialog/dialog';
-
+import { dialogTemplate, handleExpand } from '../dialog/dialog';
+import fetchMovieDetails from '../../api/fetchMovieDetails';
 /**
  *
  * Creates a movieCard element
@@ -40,21 +40,24 @@ function template(
     genre_ids,
     overview
 ) {
+    const genres = getGenres(genre_ids).join('∙');
     return html`
         <div
             id="${id}"
             class="movie-card mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col"
             style="background-image:${image};"
-            @click=${() => {
-                renderModal(
+            @click=${async() => {
+                const details =await fetchMovieDetails(id);
+                render(dialogTemplate(
                     id,
                     hdImage,
                     movieTitle,
                     year,
                     vote,
-                    getGenres(genre_ids),
-                    overview
-                );
+                    genres,
+                    overview,
+                    details
+                ), document.querySelector('#dialog-container'));
                 handleExpand();
             }}
         >
@@ -66,7 +69,7 @@ function template(
                     <span class="mdl-card__meta__rating">${vote}/10</span>
                 </p>
                 <p class="mdl-card__genres">
-                    ${getGenres(genre_ids).join('∙')}
+                    ${genres}
                 </p>
                 <p class="mdl-card__overview">
                     ${overview}
