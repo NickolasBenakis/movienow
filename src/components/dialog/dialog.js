@@ -61,10 +61,10 @@ export const dialogTemplate = (
                     </ul>
                 </div>
                 <div class="custom-dialog__similar-tab">
-                    <p>Nikos</p>
+                    <p>${renderSimilarMovies(details)}</p>
                 </div>
                 <div class="custom-dialog__reviews-tab">
-                    <p>Skata</p>
+                    <p>${renderReviews(details)}</p>
                 </div>
             </div>
             <div
@@ -100,7 +100,7 @@ export const showTab = (e) => {
 };
 
 const renderTrailer = (details) => {
-    if (details && details.trailers && details.trailers && details.trailers.youtube) {
+    if (details && details.trailers && details.trailers.youtube) {
         return  details.trailers.youtube.map(trailer =>{
             return html`    
             <li>                    
@@ -108,14 +108,43 @@ const renderTrailer = (details) => {
                     src="https://www.youtube.com/embed/${trailer && trailer.source}?origin=http://example.com" 
                     class="trailer" 
                     type="text/html" 
-                    width="240" 
-                    height="180"
+                    width="150" 
+                    height="150"
                     frameborder="0">
                 </iframe>   
             <li>`;
         });
     } 
 }
+
+
+const renderReviews = (details) => {
+    if (details && details.reviews && details.reviews.results) {
+        return  details.reviews.results.map( review =>{
+            return html`    
+            <li>                    
+                <span class="review__author">${review && review.author} </span>
+                <span class="review__content">${review && review.content} </span>
+            <li>`;
+        });
+    } 
+}
+
+const renderSimilarMovies = (details) => {
+    if (details && details.similar && details.similar.results) {
+        return  details.similar.results.map( movie =>{
+            return html`    
+            <li><div class="similar__movie" style="background-image:url(http://image.tmdb.org/t/p/w300${movie && movie.poster_path}" >                    
+                <span class="similar__title">${movie && movie.original_title} </span>
+                <span class="similar__date">${movie && movie.release_date && movie.release_date.substring(0, 4)} </span>
+                <span class="similar__title">${movie && movie.vote_average + '/10'} </span>
+                <span class="similar__title">${movie && movie.overview} </span>
+                </div>
+            <li>`;
+        });
+    } 
+}
+
 
 const toggleTabClasses = (e) => {
     const allNavItems = Array.from(e.target.parentElement.children);
