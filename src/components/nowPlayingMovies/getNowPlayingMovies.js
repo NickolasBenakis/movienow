@@ -1,8 +1,7 @@
 import fetchNowPlayingMovies from '../../api/fetchNowPlayingMovies';
-import createMovieList from '../movieCard/movieList';
-import infinityScroller from '../../utils/ObserveElement';
 
-export default async (pageNumber, nowPlayingMoviesState) => {
+
+export default async (pageNumber) => {
     try {
         const { results } = await fetchNowPlayingMovies(pageNumber);
         return results;

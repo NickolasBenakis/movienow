@@ -74,7 +74,7 @@ export const dialogTemplate = (
     `;
 };
 export const handleClose = () => {
-    var dialog = document.querySelector('.custom-dialog');
+    const dialog = document.querySelector('.custom-dialog');
     dialog.querySelector('.close').addEventListener('click', function () {
         dialog.classList.remove('is-open');
     });
@@ -174,11 +174,11 @@ const toggleTabClasses = (e) => {
 
 // dialog.addEventListener('click', function (event) {
 //     var rect = dialog.getBoundingClientRect();
-//     var isInDialog =
-//         rect.top <= event.clientY &&
-//         event.clientY <= rect.top + rect.height &&
-//         rect.left <= event.clientX &&
-//         event.clientX <= rect.left + rect.width;
+    // var isInDialog =
+    //     rect.top <= event.clientY &&
+    //     event.clientY <= rect.top + rect.height &&
+    //     rect.left <= event.clientX &&
+    //     event.clientX <= rect.left + rect.width;
 //     if (!isInDialog) {
 //         dialog.classList.remove('is-open');
 //         document.querySelector('#dialog-container').removeChild(dialog);

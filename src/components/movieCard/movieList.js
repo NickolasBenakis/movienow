@@ -2,11 +2,11 @@ import movieCard from './movieCard.js';
 import { html, render } from 'lit-html';
 import dialogTemplate from '../dialog/dialog';
 
-export default (movies, nowPlayingMoviesState) => {
+export default (movies, section) => {
     let rootElement;
-    nowPlayingMoviesState
+    (section === 'nowPlaying')
         ? (rootElement = document.getElementById('nowPlaying'))
-        : (rootElement = document.getElementById('searchMovies'));
+        : (rootElement = document.getElementById('search'));
 
     const moviesArray = movies.map(movie => {
         const child = movieCard(movie);

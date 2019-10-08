@@ -12,11 +12,9 @@ body {
     color: $white;
     font-family: 'Roboto';
     background: #ece9e6;
-    /* fallback for old browsers */
     background: -webkit-linear-gradient(to right,
             #ece9e6,
             #ffffff);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #ece9e6, #ffffff);
 }
 
@@ -34,7 +32,9 @@ section {
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: flex-start;
-
+    transition: 0.5s all ease-in-out;
+    will-change: display;
+    
     @media (max-width: 575.98px) {
         justify-content: center;
     }
@@ -184,18 +184,20 @@ section {
 } 
 
 #spinner.mdl-spinner {
-    position: sticky;
+    position: fixed;
     width: 100px;
     height: 100px;
     z-index: 100;
-    left: 50%;
-    top: 50%;
+    top: 50vh;
     opacity: 0;
-    // transition: 0.2s all;
-
-    
+    transition: 0.2s all;
 }
 
 #spinner.is-active {
-    opacity: 1;
+    opacity:1; 
+}
+
+.no-a {
+    color: inherit;
+    text-decoration: unset;
 }

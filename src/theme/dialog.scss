@@ -30,9 +30,15 @@
         color: $black;
 
         &__icon-container {
-            background: $black;
+            background: transparent;
+            opacity: 1;
             display: inline-block;
             border-radius: 2.5rem;
+            .close {
+                &:hover {
+                    color: $gray;
+                }
+            }
         }
     }
 
@@ -96,20 +102,26 @@
         width: 100%;
         position: absolute;
         -ms-flex-item-align: center;
-        height: 3rem;
+        height: 4rem;
         z-index: 1;
         font-size: 1.6rem;
         margin: 0 auto;
         display: flex;
         justify-content: center;
+        padding: 0 1rem;
 
         span {
             font-size: 1.8rem;
-            margin: 0 2rem 0 0;
+            margin: 0 3rem 0 0;
             cursor: pointer;
+            color: $gray;
 
+            &:hover {
+                color: $white;
+            }
             &.active {
                 border-bottom: 5px solid $green;
+                color: $white;
             }
         }
     }

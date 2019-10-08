@@ -7,8 +7,9 @@ import { setState } from './utils/setState';
 import cacheGenres from './utils/cacheGenres';
 import appRouting from './components/appRouting.js';
 import {loadSpinner, removeSpinner} from './components/spinner/spinner'
+import { getScrollTop, getDocumentHeight} from './utils/documentData';
 export const state = {
-    showingNowPlaying: true,
+    section: 'nowPlaying',
     elementObserved: false,
     searchInput: '',
     onlinePage: 1,
@@ -17,32 +18,30 @@ export const state = {
     onlineMoviesCache: [],
 };
 
-window.addEventListener('load', async () => {
-    appRouting();
-    if (state.showingNowPlaying) {
-        cacheGenres();
-        loadSpinner();
-        nowPlayingMoviesLogic();
-    }
+window.addEventListener('load', () => {
+    cacheGenres();
+    appRouter();
+});
+window.addEventListener('hashchange',()=>{
+    appRouter();
 });
 
 const nowPlayingMoviesLogic = async () => {
+    loadSpinner();
     const results = await getNowPlayingMovies(
-        state.onlinePage,
-        state.showingNowPlaying
+        state.onlinePage
     );
     removeSpinner();
     setState('onlineMoviesCache', results);
     const movieList = createMovieList(
         state.onlineMoviesCache,
-        state.showingNowPlaying
+        state.section
     );
     const elementToObserve = document.getElementById(
-        movieList[movieList.length - 2] &&
-            movieList[movieList.length - 2].values[0] &&
-            movieList[movieList.length - 2].values[0].toString()
+        movieList[movieList.length - 4] &&
+            movieList[movieList.length - 4].values[0] &&
+            movieList[movieList.length - 4].values[0].toString()
     );
-    console.log(elementToObserve);
     ObserveElement(elementToObserve);
     window.addEventListener(
         'scroll',
@@ -51,7 +50,6 @@ const nowPlayingMoviesLogic = async () => {
             if (state.elementObserved) {
                 state.onlinePage++;
                 state.elementObserved = false;
-                loadSpinner();
                 nowPlayingMoviesLogic();
             }
         }),
@@ -69,3 +67,26 @@ const applyColorToHeader = className => {
         rootElement.classList.add(className);
     }
 };
+
+
+const appRouter = async ()=> {
+    state.section = location.hash.slice(1)  || '/';
+    console.log(location.hash.slice(1))
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section =>{
+        section.style.display = 'none';
+    })
+
+    switch(state.section) {
+        case 'nowPlaying':
+            document.getElementById(state.section).style.display = "flex";
+            await nowPlayingMoviesLogic();
+            break;
+        case 'search':
+            document.getElementById(state.section).style.display = "flex";
+            break;
+        default:
+            window.location.hash = "#nowPlaying"
+            break;
+    }
+}
