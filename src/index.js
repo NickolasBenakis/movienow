@@ -6,6 +6,7 @@ import _ from 'lodash';
 import { setState } from './utils/setState';
 import cacheGenres from './utils/cacheGenres';
 import {loadSpinner, removeSpinner} from './components/spinner/spinner'
+import {getScrollTop} from './utils/documentData';
 import getAllMovies from './components/searchMovies/getAllMovies';
 import noResults from './components/errorHandlers/noResults';
 export const state = {
@@ -45,9 +46,9 @@ const nowPlayingMoviesLogic = async () => {
         state.section
     );
     const elementToObserve = document.getElementById(
-        movieList[movieList.length - 4] &&
-            movieList[movieList.length - 4].values[0] &&
-            movieList[movieList.length - 4].values[0].toString()
+        movieList[movieList.length - 1] &&
+            movieList[movieList.length - 1].values[0] &&
+            movieList[movieList.length - 1].values[0].toString()
     );
     ObserveElement(elementToObserve);
 };
@@ -76,11 +77,10 @@ const searchMoviesLogic = async () => {
 
 const applyColorToHeader = className => {
     const rootElement = document.querySelector('#header');
-    const sectionElement = document.querySelector('#main-content');
-    if (sectionElement.scrollTop === 0) {
+    if (getScrollTop() === 0) {
         if (rootElement.classList.contains(className))
             rootElement.classList.remove(className);
-    } else if (sectionElement.scrollTop > 15) {
+    } else if (getScrollTop() > 15) {
         rootElement.classList.add(className);
     }
 };

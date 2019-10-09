@@ -11,12 +11,12 @@ import {
 
 export default targetElement => {
     const options = {
-        root: document.getElementById('main-content'),
-        threshold: 1.0,
+        root: null,
+        threshold: 0.5,
     };
     const callback = (entries, observer) => {
         entries.forEach(entry => {
-            if (entry.intersectionRatio >= 0.8) {
+            if (entry.intersectionRatio >= 0.5) {
                 console.log('to vrika');
                 state.elementObserved = true;
                 observer.disconnect();
