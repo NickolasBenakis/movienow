@@ -2,7 +2,7 @@
 
 .movie-card {
     position: relative;
-    height: 300px;
+    height: 350px;
     min-width: 350px;
     width: 450px;
     margin: 1rem 4rem 1rem 4rem;
@@ -21,9 +21,9 @@
             0 15px 20px rgba(0, 0, 0, 0.23);
         cursor: pointer;
 
-        .mdl-card__actions {
-            height: 200px;
-        }
+        // .mdl-card__actions {
+        //     height: 200px;
+        // }
 
         .mdl-card__more {
             opacity: 0.8;
@@ -36,7 +36,7 @@
     }
 
     .mdl-card__actions {
-        height: 125px;
+        height: 200px;
         padding: 16px;
         background: rgba(0, 0, 0, 0.7);
         display: -webkit-box;

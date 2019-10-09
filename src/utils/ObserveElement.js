@@ -24,5 +24,7 @@ export default targetElement => {
         });
     };
     const observer = new IntersectionObserver(callback, options);
-    observer.observe(targetElement);
+    if (targetElement && targetElement !== null) {
+        observer.observe(targetElement);
+    }
 };

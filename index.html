@@ -79,7 +79,19 @@
         <main id="main-content" class="mdl-layout__content">
             <div id="spinner" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner"></div>
             <section class="mdl-grid section-content" id="nowPlaying"></section>
-            <section class="mdl-grid section-content" id="search" style="display:none;"></section>
+            <section class="mdl-grid section-content" id="search" style="display:none;">
+                <form class="search-form">
+                    <div class="mdl-textfield mdl-js-textfield md-dark">
+                        <input class="mdl-textfield__input" type="text" id="searchBar">
+                        <label class="mdl-textfield__label" for="searchInput">
+                            search...
+                        </label>
+                    </div>
+                </form>
+                <section class="mdl-grid section-content" id="search-list">
+
+                </section>
+            </section>
         </main>
         <div id="dialog-container">
         </div>

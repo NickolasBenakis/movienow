@@ -196,8 +196,21 @@ section {
 #spinner.is-active {
     opacity:1; 
 }
-
+.search-form {    
+    display: inline-block;
+    height: 6rem;
+    margin: 1rem 0;
+}
 .no-a {
     color: inherit;
     text-decoration: unset;
+}
+
+.no-result {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    z-index: 100;
+    top: 50vh;
+    transition: 0.2s all;
 }

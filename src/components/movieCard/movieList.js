@@ -6,7 +6,7 @@ export default (movies, section) => {
     let rootElement;
     (section === 'nowPlaying')
         ? (rootElement = document.getElementById('nowPlaying'))
-        : (rootElement = document.getElementById('search'));
+        : (rootElement = document.getElementById('search-list'));
 
     const moviesArray = movies.map(movie => {
         const child = movieCard(movie);
