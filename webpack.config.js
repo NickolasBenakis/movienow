@@ -80,11 +80,11 @@ module.exports = {
             filename: 'index.html',
             template: './index.html',
         }),
-        new CopyPlugin([
-            {
-                from: './src/theme/assets/icons',
-                to: 'theme/icons',
-            },
-        ]),
+        // new CopyPlugin([
+        //     {
+        //         from: './src/theme/assets/icons',
+        //         to: 'theme/icons',
+        //     },
+        // ]),
     ],
 };

@@ -88,7 +88,6 @@ const applyColorToHeader = className => {
 
 const appRouter = async()=> {
     state.section = location.hash.slice(1)  || '/';
-    console.log(location.hash.slice(1))
     const sections = document.querySelectorAll('section');
     sections.forEach(section =>{
         section.style.display = 'none';
