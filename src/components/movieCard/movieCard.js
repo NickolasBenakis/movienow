@@ -44,7 +44,7 @@ function template(
     return html`
         <div
             id="${id}"
-            class="movie-card mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col"
+            class="movie-card mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col loading-image"
             style="background-image:${image};"
             @click=${async() => {
                 const details =await fetchMovieDetails(id);

@@ -21,9 +21,17 @@
             <div class="mdl-layout__header-row">
                 <!-- Title -->
                 <span class="mdl-layout-title movierama">
-                    <a class="no-a" href="#nowPlaying">movierama</a>
+                    <a class="no-a mdl-layout--large-screen-only" href="#nowPlaying">movierama</a>
+                    <form class="search-form mdl-layout--small-screen-only" style="display:none;">
+                        <div class="mdl-textfield mdl-js-textfield md-dark">
+                            <input class="mdl-textfield__input" type="text" id="searchBar">
+                            <label class="mdl-textfield__label" for="searchInput">
+                                search...
+                            </label>
+                        </div>
+                    </form>
                 </span>
-                <span class="mdl-layout-title">
+                <span class="mdl-layout-title mdl-layout--large-screen-only">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 56 56"
                         style="enable-background:new 0 0 56 56;height:32px;width:32px;display:block;"
@@ -80,14 +88,6 @@
             <div id="spinner" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner"></div>
             <section class="mdl-grid section-content" id="nowPlaying"></section>
             <section class="mdl-grid section-content" id="search" style="display:none;">
-                <form class="search-form">
-                    <div class="mdl-textfield mdl-js-textfield md-dark">
-                        <input class="mdl-textfield__input" type="text" id="searchBar">
-                        <label class="mdl-textfield__label" for="searchInput">
-                            search...
-                        </label>
-                    </div>
-                </form>
                 <section class="mdl-grid section-content" id="search-list">
 
                 </section>
@@ -97,6 +97,8 @@
         </div>
     </div>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script>
+    </script>
 <script type="text/javascript" src="./bundle.js"></script></body>
 
 </html>

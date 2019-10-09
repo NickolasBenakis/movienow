@@ -6,12 +6,15 @@ const extractPlugin = new MiniCssExtractPlugin({
     filename: 'theme/index.css',
     chunkFilename: 'id.css',
 });
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TenserPlugin = require('terser-webpack-plugin');
 module.exports = {
     entry: ['@babel/polyfill', './src/index.js'],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
         publicPath: './',
+        // development => '/dist'
         devtoolModuleFilenameTemplate: info =>
             'file://' +
             path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
@@ -20,6 +23,9 @@ module.exports = {
         contentBase: './dist',
     },
     devtool: 'source-map',
+    optimization: {
+        minimizer: [new OptimizeCssAssetsPlugin(), new TenserPlugin()]
+    },
     module: {
         rules: [
             {
@@ -41,6 +47,7 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             publicPath: path.join(__dirname, './'),
+                            // -> development 'dist'
                         },
                     },
                     'css-loader',
@@ -77,7 +84,6 @@ module.exports = {
     plugins: [
         extractPlugin,
         new HtmlWebpackPlugin({
-            filename: 'index.html',
             template: './index.html',
         }),
         // new CopyPlugin([

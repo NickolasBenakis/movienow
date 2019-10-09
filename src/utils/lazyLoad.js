@@ -1,15 +1,29 @@
-export const lazyLoad = target => {
-    const obs = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const item = entry.target;
-                const src = item.getAttribute('data-lazy');
 
-                item.setAttribute('src', src);
 
-                observer.disconnect();
-            }
+console.log("uparxw")
+export const lazyLoad = ()=> {
+
+
+    var lazyBackgrounds = [].slice.call(
+        document.querySelectorAll('.loading-image')
+    );
+
+    if ('IntersectionObserver' in window) {
+        let lazyBackgroundObserver = new IntersectionObserver(function(
+            entries,
+            observer
+        ) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('loading-image');
+                    entry.target.classList.add('visible');
+                    lazyBackgroundObserver.unobserve(entry.target);
+                }
+            });
         });
-    });
-    obs.observe(target);
-};
+
+        lazyBackgrounds.forEach(function(lazyBackground) {
+            lazyBackgroundObserver.observe(lazyBackground);
+        });
+    }
+}

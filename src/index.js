@@ -9,6 +9,7 @@ import {loadSpinner, removeSpinner} from './components/spinner/spinner'
 import {getScrollTop} from './utils/documentData';
 import getAllMovies from './components/searchMovies/getAllMovies';
 import noResults from './components/errorHandlers/noResults';
+import {lazyLoad} from './utils/lazyLoad';
 export const state = {
     section: 'nowPlaying',
     elementObserved: false,
@@ -45,6 +46,8 @@ const nowPlayingMoviesLogic = async () => {
         state.onlineMoviesCache,
         state.section
     );
+    lazyLoad();
+
     const elementToObserve = document.getElementById(
         movieList[movieList.length - 1] &&
             movieList[movieList.length - 1].values[0] &&
@@ -133,6 +136,5 @@ const infinityScrollCb = async ()=> {
                 break;
                 default:
             }
-
         }
 }
