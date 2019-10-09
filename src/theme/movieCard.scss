@@ -30,8 +30,9 @@
         }
     }
 
-    @media (max-width: 575.98px) {
+    @media (max-width: 575.98px) and (any-pointer: coarse) {
         margin: 1rem;
+        width: 100%;
     }
 
     .mdl-card__actions {
