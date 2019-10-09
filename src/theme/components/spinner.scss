@@ -1,0 +1,22 @@
+#spinner.mdl-spinner {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    z-index: 100;
+    top: 50vh;
+    opacity: 0;
+    transition: 0.2s all;
+}
+
+#spinner.is-active {
+    opacity:1; 
+}
+
+.no-result {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    z-index: 100;
+    top: 50vh;
+    transition: 0.2s all;
+}

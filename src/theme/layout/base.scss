@@ -1,0 +1,13 @@
+html,
+body {
+    font-size: 62.5%;
+    -webkit-font-smoothing: antialiased;
+    color: $white;
+    font-family: 'Roboto';
+    background: #ece9e6;
+    background: -webkit-linear-gradient(to right,
+            #ece9e6,
+            #ffffff);
+    background: linear-gradient(to right, #ece9e6, #ffffff);
+    max-height: 100;
+}
