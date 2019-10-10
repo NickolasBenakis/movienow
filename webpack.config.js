@@ -8,6 +8,7 @@ const extractPlugin = new MiniCssExtractPlugin({
 });
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TenserPlugin = require('terser-webpack-plugin');
+// const MinifyPlugin = require('babel-minify-webpack-plugin');
 module.exports = {
     entry: ['@babel/polyfill', './src/index.js'],
     output: {
@@ -82,6 +83,7 @@ module.exports = {
         ],
     },
     plugins: [
+
         extractPlugin,
         new HtmlWebpackPlugin({
             template: './index.html',
