@@ -10,6 +10,7 @@
     background-position: 100%;
     background-size: contain;
     height: 0;
+    background: $black;
     visibility: hidden;
     opacity: 0;
     transition: height 0.3s ease;

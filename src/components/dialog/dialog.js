@@ -20,7 +20,7 @@ export const dialogTemplate = (
         <div
             id="${id}"
             class="mdl-dialog custom-dialog"
-            style="background-size:cover;background-image:${image}"
+            style="background-size:cover;background-attachment:fixed;background-image:${image}"
         >
             <div class="custom-dialog__close" @click=${handleClose}
             >

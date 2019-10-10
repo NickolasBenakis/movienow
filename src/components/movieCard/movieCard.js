@@ -2,6 +2,8 @@ import { html, render } from 'lit-html';
 import { getGenres } from '../../api/fetchGenres';
 import { dialogTemplate, handleExpand } from '../dialog/dialog';
 import fetchMovieDetails from '../../api/fetchMovieDetails';
+import { isMobileDevice} from '../../utils/documentData';
+import {state} from '../../index'
 /**
  *
  * Creates a movieCard element
@@ -13,18 +15,18 @@ import fetchMovieDetails from '../../api/fetchMovieDetails';
 export default movie => {
     const backgroundUrl = movie.poster_path;
     const image = backgroundUrl
-        ? `url(https://res.cloudinary.com/nickolasben/image/fetch/q_60,fl_lossy,f_auto,dpr_auto,w_auto/http://image.tmdb.org/t/p/w400${backgroundUrl})`
-        : 'grey';
+        ? `url(https://res.cloudinary.com/nickolasben/image/fetch/w_450,h_400,c_fill,g_auto/f_auto/http://image.tmdb.org/t/p/original${backgroundUrl})`
+        : null;
     const hdImage = backgroundUrl
-        ? `url(https://res.cloudinary.com/nickolasben/image/fetch/q_60,fl_lossy,f_auto,dpr_auto,w_auto/http://image.tmdb.org/t/p/original${backgroundUrl})`
-        : 'grey';
+        ? `url(https://res.cloudinary.com/nickolasben/image/fetch/w_1080,h_550,c_fill,g_auto/f_auto/http://image.tmdb.org/t/p/original${backgroundUrl})`
+        : null;
     return template(
         movie.id,
         movie.title,
         image,
         hdImage,
         movie.vote_average,
-        movie.release_date.substring(0, 4),
+        movie.release_date,
         movie.genre_ids,
         movie.overview
     );
@@ -36,16 +38,17 @@ function template(
     image,
     hdImage,
     vote,
-    year,
+    release_date,
     genre_ids,
     overview
 ) {
     const genres = getGenres(genre_ids).join('∙');
+    const  year = release_date.substring(0, 4)
     return html`
         <div
             id="${id}"
-            class="movie-card mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col loading-image"
-            style="background-image:${image};"
+            data="${image}"
+            class="movie-card mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col lazy-load"
             @click=${async() => {
                 const details =await fetchMovieDetails(id);
                 render(dialogTemplate(

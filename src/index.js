@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
         'scroll',
         _.throttle(infinityScrollCb),
         5000
-    );
+    ,{passive: true});
     window.removeEventListener("scroll",infinityScrollCb);
 });
 window.addEventListener('hashchange',()=>{

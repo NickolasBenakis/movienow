@@ -1,11 +1,12 @@
 
 
 console.log("uparxw")
+import {state } from '../index'
 export const lazyLoad = ()=> {
 
 
     var lazyBackgrounds = [].slice.call(
-        document.querySelectorAll('.loading-image')
+        document.querySelectorAll('.lazy-load')
     );
 
     if ('IntersectionObserver' in window) {
@@ -15,8 +16,8 @@ export const lazyLoad = ()=> {
         ) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
-                    entry.target.classList.remove('loading-image');
-                    entry.target.classList.add('visible');
+                    const imageSrc =entry.target.attributes[2].value.substring(0);
+                    entry.target.style.backgroundImage = imageSrc;
                     lazyBackgroundObserver.unobserve(entry.target);
                 }
             });
