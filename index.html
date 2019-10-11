@@ -22,14 +22,6 @@
                 <!-- Title -->
                 <span class="mdl-layout-title movierama">
                     <a class="no-a mdl-layout--large-screen-only" href="#nowPlaying">movierama</a>
-                    <form class="search-form mdl-layout--small-screen-only" style="display:none;">
-                        <div class="mdl-textfield mdl-js-textfield md-dark">
-                            <input class="mdl-textfield__input" type="text" id="searchBar">
-                            <label class="mdl-textfield__label" for="searchInput">
-                                search...
-                            </label>
-                        </div>
-                    </form>
                 </span>
                 <span class="mdl-layout-title mdl-layout--large-screen-only">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -68,6 +60,14 @@
                         <g></g>
                     </svg>
                 </span>
+                <form class="search-form">
+                    <div class="mdl-textfield mdl-js-textfield md-dark">
+                        <input class="mdl-textfield__input" type="text" id="searchBar">
+                        <label class="mdl-textfield__label" for="searchInput">
+                            search...
+                        </label>
+                    </div>
+                </form>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
@@ -87,11 +87,7 @@
         <main id="main-content" class="mdl-layout__content">
             <div id="spinner" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner"></div>
             <section class="mdl-grid section-content" id="nowPlaying"></section>
-            <section class="mdl-grid section-content" id="search" style="display:none;">
-                <section class="mdl-grid section-content" id="search-list">
-
-                </section>
-            </section>
+            <section class="mdl-grid section-content" id="search" style="display:none;"></section>
         </main>
         <div id="dialog-container">
         </div>

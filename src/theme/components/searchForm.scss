@@ -1,6 +1,23 @@
 .search-form {    
     display: inline-block;
     height: 6rem;
-    margin: 1rem 0;
-    width: 25rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 575px;
+    @media (max-width: 575.98px) {
+        width: 300px;
+    }
+}
+
+.mdl-textfield {
+    position: relative;
+    font-size: 16px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 20px 0;
 }

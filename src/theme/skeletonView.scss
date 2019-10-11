@@ -22,12 +22,9 @@
     background-image: -o-linear-gradient(left, #ececec 0px, #f4f4f4 40px, #ececec 80px);
     background-image: linear-gradient(90deg, #ececec 0px, #f4f4f4 40px, #ececec 80px);
     background: 50%/cover;
-    //-webkit-animation: shine-loading-image 1.5s infinite ease-out;
-    //animation: shine-loading-image 1.5s infinite ease-out;
+    -webkit-animation: shine-loading-image 1.5s infinite ease-out;
+    animation: shine-loading-image 1.5s infinite ease-out;
 }
-// .loading-image.visible {
-//     animation: unset;
-// }
 
 @-webkit-keyframes shine-loading-image {
     0% {

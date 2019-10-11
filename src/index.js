@@ -80,11 +80,16 @@ const searchMoviesLogic = async () => {
 
 const applyColorToHeader = className => {
     const rootElement = document.querySelector('#header');
+    const form = document.querySelector(".mdl-js-textfield");
     if (getScrollTop() === 0) {
         if (rootElement.classList.contains(className))
             rootElement.classList.remove(className);
+        if (form.classList.contains("md-light"))
+            form.classList.remove("md-light");
     } else if (getScrollTop() > 15) {
         rootElement.classList.add(className);
+        form.classList.add("md-light");
+        
     }
 };
 
@@ -106,12 +111,12 @@ const appRouter = async()=> {
             const input = document.getElementById('searchBar');
             input.addEventListener("keyup", _.debounce(async() => {
                 if (input.value !== state.input) {
-                    document.getElementById("search-list").style.display = "none";
+                    document.getElementById("search").style.display = "none";
                     state.searchPage = 1;
                 }
+                document.getElementById("search").style.display = "flex";
                 state.input = input.value && input.value.toLowerCase();
                 await searchMoviesLogic();
-                document.getElementById("search-list").style.display = "flex";
             }, 2000))
             break;
         default:

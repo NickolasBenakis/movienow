@@ -14,7 +14,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: './',
+        publicPath: '/dist',
         // development => '/dist'
         devtoolModuleFilenameTemplate: info =>
             'file://' +
@@ -47,7 +47,7 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            publicPath: path.join(__dirname, './'),
+                            publicPath: path.join(__dirname, 'dist'),
                             // -> development 'dist'
                         },
                     },
