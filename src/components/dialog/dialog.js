@@ -1,10 +1,5 @@
-import {
-    html,
-    render
-} from 'lit-html';
-import {
-    asyncReplace
-} from 'lit-html/directives/async-replace'
+import {html} from 'lit-html';
+
 export const dialogTemplate = (
     id,
     image,
@@ -15,7 +10,6 @@ export const dialogTemplate = (
     overview,
     details
 ) => {
-    console.log(details)
     return html `
         <div
             id="${id}"

@@ -13,7 +13,6 @@ export default async (input,pageNumber) => {
         const { results } = await fetchAllMovies(input,pageNumber);
         return results;
     } catch (error) {
-        console.log(error);
         alert('Sorry there was an error Please reload', error);
     }
 };

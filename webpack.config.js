@@ -15,18 +15,20 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/dist',
+        publicPath: './',
         // development => '/dist'
         devtoolModuleFilenameTemplate: info =>
             'file://' +
             path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
     },
     devServer: {
-        contentBase: './dist',
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 9000,
     },
     // devtool: 'source-map',
     optimization: {
-        minimizer: [new OptimizeCssAssetsPlugin(), new TenserPlugin()]
+        minimizer: [new OptimizeCssAssetsPlugin(), new TenserPlugin()],
     },
     module: {
         rules: [
@@ -48,7 +50,7 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            publicPath: path.join(__dirname, 'dist'),
+                            publicPath: path.join(__dirname, './'),
                             // -> development 'dist'
                         },
                     },
@@ -62,7 +64,7 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: 'theme/fonts/[name].[ext]',
+                            name: 'theme/assets/fonts/[name].[ext]',
                             publicPath: '../',
                         },
                     },
@@ -84,7 +86,6 @@ module.exports = {
         ],
     },
     plugins: [
-
         extractPlugin,
         new HtmlWebpackPlugin({
             template: './index.html',
@@ -98,13 +99,17 @@ module.exports = {
                 from: './vendor',
                 to: 'vendor',
             },
-
+            ,
+            {
+                from: './manifest.webmanifest',
+                to: './',
+            },
         ]),
         new BrotliPlugin({
-			asset: '[path].br[query]',
-			test: /\.(js|css|html|svg)$/,
-			threshold: 10240,
-			minRatio: 0.8            
-        })
+            asset: '[path].br[query]',
+            test: /\.(js|css|html|svg)$/,
+            threshold: 10240,
+            minRatio: 0.8,
+        }),
     ],
 };

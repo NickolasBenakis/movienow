@@ -1,7 +1,5 @@
 
 
-console.log("uparxw")
-import {state } from '../index'
 export const lazyLoad = ()=> {
 
 

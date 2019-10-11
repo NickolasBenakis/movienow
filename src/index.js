@@ -8,7 +8,6 @@ import cacheGenres from './utils/cacheGenres';
 import {loadSpinner, removeSpinner} from './components/spinner/spinner'
 import {getScrollTop} from './utils/documentData';
 import getAllMovies from './components/searchMovies/getAllMovies';
-import noResults from './components/errorHandlers/noResults';
 import {lazyLoad} from './utils/lazyLoad';
 export const state = {
     section: 'nowPlaying',
@@ -63,7 +62,6 @@ const searchMoviesLogic = async () => {
         removeSpinner();
         //setState('searchMoviesCache', results);
         if (results.length <20 || !results.length){
-            noResults();
         }
         const movieList = createMovieList(
             results,

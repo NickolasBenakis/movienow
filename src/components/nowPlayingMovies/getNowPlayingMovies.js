@@ -6,7 +6,6 @@ export default async (pageNumber) => {
         const { results } = await fetchNowPlayingMovies(pageNumber);
         return results;
     } catch (error) {
-        console.log(error);
         alert('Sorry there was an error Please reload', error);
     }
 };
