@@ -1,0 +1,30 @@
+{
+    "name": "Movierama – Movie catalog",
+    "short_name": "movierama",
+    "icons": [
+        {
+            "src": "./theme/assets/icons/video-play-64.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "./theme/assets/icons/video-play-128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "./theme/assets/icons/video-play-256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "./theme/assets/icons/video-play-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "display": "fullscreen",
+    "start_url": ".",
+    "background_color": "#fff",
+    "theme_color": "#008bb3"
+}
