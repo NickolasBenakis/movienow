@@ -8,6 +8,7 @@ const extractPlugin = new MiniCssExtractPlugin({
 });
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TenserPlugin = require('terser-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
 // const MinifyPlugin = require('babel-minify-webpack-plugin');
 module.exports = {
     entry: ['@babel/polyfill', './src/index.js'],
@@ -23,7 +24,7 @@ module.exports = {
     devServer: {
         contentBase: './dist',
     },
-    devtool: 'source-map',
+    // devtool: 'source-map',
     optimization: {
         minimizer: [new OptimizeCssAssetsPlugin(), new TenserPlugin()]
     },
@@ -88,11 +89,22 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './index.html',
         }),
-        // new CopyPlugin([
-        //     {
-        //         from: './src/theme/assets/icons',
-        //         to: 'theme/icons',
-        //     },
-        // ]),
+        new CopyPlugin([
+            {
+                from: './src/theme/assets/icons',
+                to: 'theme/icons',
+            },
+            {
+                from: './vendor',
+                to: 'vendor',
+            },
+
+        ]),
+        new BrotliPlugin({
+			asset: '[path].br[query]',
+			test: /\.(js|css|html|svg)$/,
+			threshold: 10240,
+			minRatio: 0.8            
+        })
     ],
 };
