@@ -113,7 +113,6 @@ const appRouter = async () => {
                 'keyup',
                 _.debounce(async () => {
                     const inputValue = input.value && input.value.toLowerCase();
-                    console.log(inputValue);
                     if (inputValue !== state.input) {
                         document.getElementById('search').style.display =
                             'none';
