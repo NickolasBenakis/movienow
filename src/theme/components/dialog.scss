@@ -19,7 +19,6 @@
     &__close {
         float: right;
         text-align: right;
-        cursor: pointer;
         z-index: 1;
         color: $black;
 
@@ -31,6 +30,7 @@
             border-radius: 3.5rem;
             width: 50px;
             padding: 1rem;
+            cursor: pointer;
             &:hover {
                 color: $gray;
                 background: $gray;  
