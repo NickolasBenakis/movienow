@@ -5,9 +5,7 @@ body {
     color: $white;
     font-family: 'Roboto';
     background: #ece9e6;
-    background: -webkit-linear-gradient(to right,
-            #ece9e6,
-            #ffffff);
+    background: -webkit-linear-gradient(to right, #ece9e6, #ffffff);
     background: linear-gradient(to right, #ece9e6, #ffffff);
     max-height: 100;
 }

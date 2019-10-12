@@ -52,7 +52,7 @@ module.exports = {
                     'css-loader',
                     {
                         loader: 'resolve-url-loader',
-                        options: {}
+                        options: {},
                     },
                     'sass-loader',
                 ],
@@ -65,7 +65,7 @@ module.exports = {
                         options: {
                             name: './[name].[ext]',
                             output: './assets',
-                            publicPath: './assets'
+                            publicPath: './assets',
                         },
                     },
                 ],
@@ -100,13 +100,13 @@ module.exports = {
         new CopyPlugin([
             {
                 from: './src/theme/assets',
-                to: 'theme/assets'
+                to: 'theme/assets',
             },
             {
                 from: './vendor',
                 to: 'vendor',
             },
-    
+
             {
                 from: './manifest.webmanifest',
                 to: './',

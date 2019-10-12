@@ -4,7 +4,7 @@ import dialogTemplate from '../dialog/dialog';
 
 export default (movies, section) => {
     let rootElement;
-    (section === 'nowPlaying')
+    section === 'nowPlaying'
         ? (rootElement = document.getElementById('nowPlaying'))
         : (rootElement = document.getElementById('search-list'));
 

@@ -1,6 +1,4 @@
-import {
-    state
-} from '../index.js';
+import { state } from '../index.js';
 
 /**
  *

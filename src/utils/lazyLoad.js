@@ -1,8 +1,4 @@
-
-
-export const lazyLoad = ()=> {
-
-
+export const lazyLoad = () => {
     var lazyBackgrounds = [].slice.call(
         document.querySelectorAll('.lazy-load')
     );
@@ -14,7 +10,9 @@ export const lazyLoad = ()=> {
         ) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
-                    const imageSrc =entry.target.attributes[2].value.substring(0);
+                    const imageSrc = entry.target.attributes[2].value.substring(
+                        0
+                    );
                     entry.target.style.backgroundImage = imageSrc;
                     lazyBackgroundObserver.unobserve(entry.target);
                 }
@@ -25,4 +23,4 @@ export const lazyLoad = ()=> {
             lazyBackgroundObserver.observe(lazyBackground);
         });
     }
-}
+};

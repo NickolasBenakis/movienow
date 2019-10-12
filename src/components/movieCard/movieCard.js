@@ -2,8 +2,8 @@ import { html, render } from 'lit-html';
 import { getGenres } from '../../api/fetchGenres';
 import { dialogTemplate, handleExpand } from '../dialog/dialog';
 import fetchMovieDetails from '../../api/fetchMovieDetails';
-import { isMobileDevice} from '../../utils/documentData';
-import {state} from '../../index'
+import { isMobileDevice } from '../../utils/documentData';
+import { state } from '../../index';
 /**
  *
  * Creates a movieCard element
@@ -43,24 +43,27 @@ function template(
     overview
 ) {
     const genres = getGenres(genre_ids).join('∙');
-    const  year = release_date.substring(0, 4)
+    const year = release_date.substring(0, 4);
     return html`
         <div
             id="${id}"
             data="${image}"
             class="movie-card mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col lazy-load"
-            @click=${async() => {
-                const details =await fetchMovieDetails(id);
-                render(dialogTemplate(
-                    id,
-                    hdImage,
-                    movieTitle,
-                    year,
-                    vote,
-                    genres,
-                    overview,
-                    details
-                ), document.querySelector('#dialog-container'));
+            @click=${async () => {
+                const details = await fetchMovieDetails(id);
+                render(
+                    dialogTemplate(
+                        id,
+                        hdImage,
+                        movieTitle,
+                        year,
+                        vote,
+                        genres,
+                        overview,
+                        details
+                    ),
+                    document.querySelector('#dialog-container')
+                );
                 handleExpand();
             }}
         >

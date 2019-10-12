@@ -46,20 +46,23 @@
         padding-top: 3rem;
         height: 100%;
         padding-left: 5rem;
-        
 
         @media only screen and (max-width: 74em) {
-            background: linear-gradient(90deg,
-                    #000 40%,
-                    rgba(0, 0, 0, 0.733),
-                    transparent);
+            background: linear-gradient(
+                90deg,
+                #000 40%,
+                rgba(0, 0, 0, 0.733),
+                transparent
+            );
             width: 88%;
         }
 
         @media only screen and (max-width: 61.25em) {
-            background: linear-gradient(90deg,
-                    rgba(0, 0, 0, 0.966) 30%,
-                    transparent);
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.966) 30%,
+                transparent
+            );
             width: 100%;
         }
 
@@ -191,7 +194,6 @@
         transition: all 0.2s ease;
         -webkit-font-smoothing: antialiased;
         background-size: cover;
-
     }
 }
 
@@ -219,7 +221,6 @@
         @media only screen and (max-width: 37.5em) {
             width: 15%;
         }
-
     }
 
     &__movie--container {
@@ -238,7 +239,6 @@
 }
 
 .review {
-
     &__container {
         height: 300px;
         margin: 1rem;
@@ -252,7 +252,6 @@
         @media (max-width: 97.5em) {
             width: 30%;
         }
-
     }
 
     &__author {
@@ -267,7 +266,6 @@
         color: $gray;
     }
 }
-
 
 // .custom-dialog__trailer-tab {
 //     width: 100vw;

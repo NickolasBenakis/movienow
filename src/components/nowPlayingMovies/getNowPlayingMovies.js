@@ -1,7 +1,6 @@
 import fetchNowPlayingMovies from '../../api/fetchNowPlayingMovies';
 
-
-export default async (pageNumber) => {
+export default async pageNumber => {
     try {
         const { results } = await fetchNowPlayingMovies(pageNumber);
         return results;

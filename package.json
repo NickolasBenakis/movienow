@@ -9,7 +9,7 @@
         "test": "jest",
         "deploy": "./node_modules/.bin/surge --domain https://movierama-test.surge.sh",
         "clean": "rimraf ./dist",
-        "prettier:write": "./node_modules/.bin/prettier --write './src/**/*{.js,.html,.scss}'",
+        "prettier:write": "./node_modules/.bin/prettier --write './**/*{.js,.html,.scss}'",
         "prettier:check": "./node_modules/.bin/prettier --check './src/**/*{.js,.html,.scss}'",
         "sass": "node-sass -w scss/ -o css/"
         },
