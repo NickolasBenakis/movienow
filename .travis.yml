@@ -10,6 +10,6 @@ node_js:
 install:
   - npm install -g npm@2
   - npm install -g webpack-cli
-  - npm instlal -g webpack
+  - npm install -g webpack
 script:
   - npm run build
