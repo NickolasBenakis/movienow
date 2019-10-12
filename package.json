@@ -1,5 +1,5 @@
 {
-    "name": "movierama2020",
+    "name": "movienow",
     "version": "1.0.0",
     "description": "Movies",
     "main": "index.js",
@@ -7,7 +7,7 @@
         "start": "webpack-dev-server --config ./webpack.dev.js",
         "build": "webpack --config ./webpack.prod.js",
         "test": "jest",
-        "deploy": "./node_modules/.bin/surge --domain https://movierama-test.surge.sh",
+        "deploy": "./node_modules/.bin/surge --domain https://movienow.surge.sh",
         "clean": "rimraf ./dist",
         "prettier:write": "./node_modules/.bin/prettier --write './**/*{.js,.html,.scss}'",
         "prettier:check": "./node_modules/.bin/prettier --check './src/**/*{.js,.html,.scss}'",
