@@ -9,6 +9,7 @@ node_js:
   - "10"
 install:
   - npm install -g npm@2
-  - npm install -g
+before_script:
+  - npm install
 script:
   - npm run build
