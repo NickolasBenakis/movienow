@@ -53,7 +53,7 @@ $ npm start
 This will run `webpack-dev-server` with hot reloading, allowing you to run the app in your browser, continue to develop, and see your changes take effect live.
 
 ## Test
-This application does not rely on any testing framework. Instead, I have included a set of test suites (in reality just a set of IIFEs) in `index.test.js`. To run them, first comment out the test suite you want to run, then execute:
+This application does rely on jest testing framework. Run this following command to test the whole coverage of the app:
 ```
 $ npm test
 ```
