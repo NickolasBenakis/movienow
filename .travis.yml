@@ -9,5 +9,7 @@ node_js:
   - "10"
 install:
   - npm install -g npm@2
+  - npm install -g webpack-cli
+  - npm instlal -g webpack
 script:
   - npm run build
