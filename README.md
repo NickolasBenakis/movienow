@@ -14,7 +14,7 @@
 
 
 ## Intro
-Movienow is a single page application that utilizes the [MovieDB API](https://developers.themoviedb.org/3) to allow you to browse movies, watch trailers, read reviews, and more. It is developed entirely in vanilla JS. The only dependencies are a few Babel and Webpack packages required for transpiling / compiling.It is also ProgressiveWepApp, so you can explore movies from your phone as well offline! 
+Movienow is a single page application that consumes the [MovieDB API](https://developers.themoviedb.org/3) to allow you to browse movies, watch trailers, read reviews, and more. It is developed entirely in vanilla JS. The only dependencies are a few Babel and Webpack packages required for transpiling / compiling.It is also ProgressiveWepApp, so you can explore movies from your phone as well offline! 
 
 More specifically, the app allows you to:
 
