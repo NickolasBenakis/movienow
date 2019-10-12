@@ -9,24 +9,20 @@ const extractPlugin = new MiniCssExtractPlugin({
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TenserPlugin = require('terser-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 // const MinifyPlugin = require('babel-minify-webpack-plugin');
 module.exports = {
+    mode: 'production',
     entry: ['@babel/polyfill', './src/index.js'],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
         publicPath: './',
-        // development => '/dist'
         devtoolModuleFilenameTemplate: info =>
             'file://' +
             path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
     },
-    devServer: {
-        contentBase: path.join(__dirname, 'dist'),
-        compress: true,
-        port: 9000,
-    },
-    // devtool: 'source-map',
     optimization: {
         minimizer: [new OptimizeCssAssetsPlugin(), new TenserPlugin()],
     },
@@ -51,7 +47,6 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             publicPath: path.join(__dirname, './'),
-                            // -> development 'dist'
                         },
                     },
                     'css-loader',
@@ -101,6 +96,7 @@ module.exports = {
         ],
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new CopyPlugin([
             {
                 from: './src/theme/assets',
