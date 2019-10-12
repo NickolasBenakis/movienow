@@ -18,7 +18,7 @@
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
         <link rel="stylesheet" href="./vendor/material.indigo-pink.min.css" />
-    </head>
+    <link href="./theme/index.css" rel="stylesheet"></head>
 
     <body>
         <div
@@ -116,24 +116,8 @@
                             <g></g>
                         </svg>
                     </span>
-                    <form class="search-form form-secret">
-                        <div class="mdl-textfield mdl-js-textfield md-cyan">
-                            <input
-                                class="mdl-textfield__input"
-                                type="text"
-                                id="searchBar"
-                            />
-                            <label class="mdl-textfield__label" for="searchBar">
-                                search...
-                            </label>
-                        </div>
-                    </form>
                     <!-- Add spacer, to align navigation to the right -->
                     <div class="mdl-layout-spacer"></div>
-                    <!-- <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link is-active" href="#nowPlaying">in theaters</a><a
-                        class="mdl-navigation__link" href="#search">search</a>
-                </nav> -->
                 </div>
             </header>
             <div class="mdl-layout__drawer">
@@ -145,34 +129,10 @@
         </div>
 
             <main id="main-content" class="mdl-layout__content">
-                <div
-                    id="spinner"
-                    class="mdl-spinner mdl-spinner--single-color mdl-js-spinner"
-                ></div>
-                <section
-                    class="mdl-grid section-content"
-                    id="nowPlaying"
-                ></section>
-                <section
-                    class="mdl-grid section-content"
-                    id="search"
-                    style="display:none;"
-                ></section>
+                Oups, it seems you're offline :)
             </main>
             <div id="dialog-container"></div>
         </div>
         <script defer async src="./vendor/material.min.js"></script>
-        <script type="text/javascript">
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker
-                    .register('sw.js')
-                    .then(registration =>
-                        console.log('Service Worker registered')
-                    )
-                    .catch(err => {
-                        console.log('SW registration failed', err);
-                    });
-            }
-        </script>
-    </body>
+    <script type="text/javascript" src="./bundle.js"></script></body>
 </html>

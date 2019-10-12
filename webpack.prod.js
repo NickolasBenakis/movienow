@@ -1,4 +1,5 @@
 let path = require('path');
+const workboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -111,6 +112,14 @@ module.exports = {
                 from: './manifest.webmanifest',
                 to: './',
             },
+            {
+                from: './sw.js',
+                to: './'
+            },
+            {
+                from: './offline.html',
+                to: './'
+            }
         ]),
         extractPlugin,
         new HtmlWebpackPlugin({
@@ -127,5 +136,10 @@ module.exports = {
             threshold: 10240,
             minRatio: 0.8,
         }),
+        // new workboxPlugin.GenerateSW({
+        //     swDest: 'sw.js',
+        //     clientsClaim: true,
+        //     skipWaiting: true,
+        // })
     ],
 };

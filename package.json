@@ -12,7 +12,7 @@
         "prettier:write": "./node_modules/.bin/prettier --write './**/*{.js,.html,.scss}'",
         "prettier:check": "./node_modules/.bin/prettier --check './src/**/*{.js,.html,.scss}'",
         "sass": "node-sass -w scss/ -o css/"
-        },
+    },
     "author": "nickolasbenele@gmail.com, nbenakis",
     "license": "ISC",
     "dependencies": {
@@ -50,6 +50,7 @@
         "webpack-cli": "^3.2.3",
         "webpack-dev-server": "^3.2.0",
         "webpack-merge": "^4.2.2",
-        "webpack-node-externals": "^1.7.2"
+        "webpack-node-externals": "^1.7.2",
+        "workbox-webpack-plugin": "^4.3.1"
     }
 }
