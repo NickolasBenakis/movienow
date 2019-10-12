@@ -43,7 +43,7 @@ function template(
     overview
 ) {
     const genres = getGenres(genre_ids).join('∙');
-    const year = release_date && release_date.substring(0,4) || "";
+    const year = (release_date && release_date.substring(0, 4)) || '';
     return html`
         <div
             id="${id}"

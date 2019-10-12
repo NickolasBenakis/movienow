@@ -112,9 +112,7 @@ const appRouter = async () => {
             input.addEventListener(
                 'keyup',
                 _.debounce(async () => {
-                    const inputValue =
-                        input.value &&
-                        input.value.toLowerCase();
+                    const inputValue = input.value && input.value.toLowerCase();
                     console.log(inputValue);
                     if (inputValue !== state.input) {
                         document.getElementById('search').style.display =

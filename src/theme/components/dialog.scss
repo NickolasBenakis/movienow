@@ -33,7 +33,7 @@
             cursor: pointer;
             &:hover {
                 color: $gray;
-                background: $gray;  
+                background: $gray;
             }
             .close {
                 vertical-align: middle;
@@ -285,11 +285,9 @@
     }
 }
 
-
 .video-container iframe,
 .video-container object,
 .video-container embed {
-
     width: 95vw;
     height: 100%;
 }

@@ -113,12 +113,12 @@ module.exports = {
             },
             {
                 from: './sw.js',
-                to: './'
+                to: './',
             },
             {
                 from: './offline.html',
-                to: './'
-            }
+                to: './',
+            },
         ]),
         extractPlugin,
         new HtmlWebpackPlugin({
@@ -126,8 +126,8 @@ module.exports = {
             minify: {
                 removeAttributeQuotes: true,
                 collapseWhitespace: true,
-                removeComments: true
-            }
+                removeComments: true,
+            },
         }),
         new BrotliPlugin({
             asset: '[path].br[query]',

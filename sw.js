@@ -14,7 +14,7 @@ const filesToCache = [
     './bundle.js',
     './bundle.js.br',
     './bundle.js.LICENSE',
-    'offline.html'
+    'offline.html',
 ];
 
 self.addEventListener('install', function(event) {
