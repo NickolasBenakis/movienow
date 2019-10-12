@@ -8,6 +8,15 @@ language: node_js
 node_js:
   - "10"
 install:
-  - npm install -g npm@2 --only=dev
+  - npm install -g npm@2
+  - npm install -g webpack
+  - npm install -g webpack-cli
+  - npm install -g html-webpack-plugin
+  - npm install -g copy-webpack-plugin
+  - npm install -g mini-css-extract-plugin
+  - npm install -g optimize-css-assets-webpack-plugin
+  - npm install -g terser-webpack-plugin
+  - npm install -g brotli-webpack-plugin
+  - npm install -g clean-webpack-plugin
 script:
   - npm run build
