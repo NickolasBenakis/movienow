@@ -115,6 +115,11 @@ module.exports = {
         extractPlugin,
         new HtmlWebpackPlugin({
             template: './index.html',
+            minify: {
+                removeAttributeQuotes: true,
+                collapseWhitespace: true,
+                removeComments: true
+            }
         }),
         new BrotliPlugin({
             asset: '[path].br[query]',
