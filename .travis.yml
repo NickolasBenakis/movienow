@@ -1,0 +1,13 @@
+sudo: false
+notifications:
+  email: false
+branches:
+  only:
+    - master
+language: node_js
+node_js:
+  - "10"
+install:
+  - npm install -g npm@2
+script:
+  - npm run build
