@@ -1,6 +1,5 @@
 .search-form {
-    display: inline-block;
-    height: 6rem;
+    height: 7rem;
     position: absolute;
     left: 0;
     right: 0;
@@ -22,6 +21,7 @@
     padding: 20px 0;
     &__input {
         font-size: 2rem;
+        width: 95%;
     }
     &__label {
         bottom: 0;
@@ -38,4 +38,11 @@
         white-space: nowrap;
         text-align: left;
     }
+}
+
+.form-secret {
+    display: none;
+}
+.is-form-visible {
+    display: inline-block;
 }

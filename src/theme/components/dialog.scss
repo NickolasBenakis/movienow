@@ -140,8 +140,6 @@
     &__trailer-tab,
     &__reviews-tab,
     &__similar-tab {
-        transition: transform 0.3s ease;
-        -webkit-transform: 0.3s ease;
         display: none;
         opacity: 0;
     }
@@ -150,8 +148,6 @@
     &__trailer-tab.active,
     &__reviews-tab.active,
     &__similar-tab.active {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
         display: block;
         opacity: 1;
     }

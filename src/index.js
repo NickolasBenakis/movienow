@@ -9,6 +9,7 @@ import { loadSpinner, removeSpinner } from './components/spinner/spinner';
 import { getScrollTop } from './utils/documentData';
 import getAllMovies from './components/searchMovies/getAllMovies';
 import { lazyLoad } from './utils/lazyLoad';
+import { showErrorTpl } from './utils/errorHandling';
 export const state = {
     section: 'nowPlaying',
     elementObserved: false,
@@ -53,16 +54,23 @@ const searchMoviesLogic = async () => {
         loadSpinner();
         const results = await getAllMovies(state.input, state.searchPage);
         removeSpinner();
-        //setState('searchMoviesCache', results);
-        if (results.length < 20 || !results.length) {
+        if (results.length) {
+            setState('searchMoviesCache', results);
+            const movieList = createMovieList(
+                state.searchMoviesCache,
+                state.section
+            );
+            lazyLoad();
+
+            const elementToObserve = document.getElementById(
+                movieList[movieList.length - 1] &&
+                    movieList[movieList.length - 1].values[0] &&
+                    movieList[movieList.length - 1].values[0].toString()
+            );
+            ObserveElement(elementToObserve);
+        } else if (!results.length && !state.searchMoviesCache.length) {
+            showErrorTpl(results.length);
         }
-        const movieList = createMovieList(results, state.section);
-        const elementToObserve = document.getElementById(
-            movieList[movieList.length - 4] &&
-                movieList[movieList.length - 4].values[0] &&
-                movieList[movieList.length - 4].values[0].toString()
-        );
-        ObserveElement(elementToObserve);
     }
 };
 
@@ -84,6 +92,10 @@ const applyColorToHeader = className => {
 const appRouter = async () => {
     state.section = location.hash.slice(1) || '/';
     const sections = document.querySelectorAll('section');
+    const form = document.querySelector('.search-form');
+    if (form.classList.contains('is-form-visible')) {
+        form.classList.remove('is-form-visible');
+    }
     sections.forEach(section => {
         section.style.display = 'none';
     });
@@ -96,16 +108,22 @@ const appRouter = async () => {
         case 'search':
             document.getElementById(state.section).style.display = 'flex';
             const input = document.getElementById('searchBar');
+            form.classList.add('is-form-visible');
             input.addEventListener(
                 'keyup',
                 _.debounce(async () => {
-                    if (input.value !== state.input) {
+                    const inputValue =
+                        input.value &&
+                        input.value.toLowerCase();
+                    console.log(inputValue);
+                    if (inputValue !== state.input) {
                         document.getElementById('search').style.display =
                             'none';
                         state.searchPage = 1;
+                        state.searchMoviesCache = [];
                     }
                     document.getElementById('search').style.display = 'flex';
-                    state.input = input.value && input.value.toLowerCase();
+                    state.input = inputValue;
                     await searchMoviesLogic();
                 }, 2000)
             );

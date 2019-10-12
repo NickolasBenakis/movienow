@@ -9,11 +9,16 @@ section {
     transition: 0.5s all ease-in-out;
     will-change: display;
 
-    @media (max-width: 575.98px) {
+    @media (max-width: 57.98em) {
         justify-content: center;
     }
 
-    @media (min-width: 576px) and (max-width: 1090px) {
+    @media (min-width: 57.6em) and (max-width: 109.4em) {
         justify-content: center;
     }
+}
+
+.template-error {
+    color: darkred;
+    text-align: center;
 }

@@ -6,14 +6,12 @@ export default (movies, section) => {
     let rootElement;
     section === 'nowPlaying'
         ? (rootElement = document.getElementById('nowPlaying'))
-        : (rootElement = document.getElementById('search-list'));
+        : (rootElement = document.getElementById('search'));
 
     const moviesArray = movies.map(movie => {
         const child = movieCard(movie);
         return child;
     });
-    // const dialogTpl = dialogTemplate();
-    // render(dialogTpl, document.querySelector('#dialog-container'));
     render(moviesArray, rootElement);
     return moviesArray;
 };

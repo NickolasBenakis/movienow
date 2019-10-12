@@ -159,7 +159,7 @@ const renderReviews = details => {
         } else {
             return html`
                 <div class="custom-dialog__title">
-                    No trailers found for this movie.
+                    No reviews found for this movie.
                 </div>
             `;
         }
@@ -196,7 +196,7 @@ const renderSimilarMovies = details => {
         } else {
             return html`
                 <div class="custom-dialog__title">
-                    No trailers found for this movie.
+                    No similar movies found for this movie.
                 </div>
             `;
         }
