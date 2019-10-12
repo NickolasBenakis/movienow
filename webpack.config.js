@@ -55,17 +55,33 @@ module.exports = {
                         },
                     },
                     'css-loader',
+                    {
+                        loader: 'resolve-url-loader',
+                        options: {}
+                    },
                     'sass-loader',
                 ],
             },
             {
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                test: /\.(woff(2)?|ttf|eot|)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [
                     {
                         loader: 'file-loader',
                         options: {
-                            name: 'theme/assets/fonts/[name].[ext]',
-                            publicPath: '../',
+                            name: './[name].[ext]',
+                            output: './assets',
+                            publicPath: './assets'
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'theme/assets/[name].[ext]',
                         },
                     },
                 ],
@@ -78,7 +94,6 @@ module.exports = {
                         options: {
                             limit: 5000,
                             quality: 85,
-                            outputPath: 'dist/',
                         },
                     },
                 ],
@@ -86,25 +101,25 @@ module.exports = {
         ],
     },
     plugins: [
-        extractPlugin,
-        new HtmlWebpackPlugin({
-            template: './index.html',
-        }),
         new CopyPlugin([
             {
-                from: './src/theme/assets/icons',
-                to: 'theme/icons',
+                from: './src/theme/assets',
+                to: 'theme/assets'
             },
             {
                 from: './vendor',
                 to: 'vendor',
             },
-            ,
+    
             {
                 from: './manifest.webmanifest',
                 to: './',
             },
         ]),
+        extractPlugin,
+        new HtmlWebpackPlugin({
+            template: './index.html',
+        }),
         new BrotliPlugin({
             asset: '[path].br[query]',
             test: /\.(js|css|html|svg)$/,

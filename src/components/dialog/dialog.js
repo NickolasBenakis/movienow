@@ -50,15 +50,13 @@ export const dialogTemplate = (
                     </p>
                 </div>
                 <div class="custom-dialog__trailer-tab">
-                    <ul id="ytContainer">
                         ${renderTrailer(details)}
-                    </ul>
                 </div>
                 <div class="custom-dialog__similar-tab">
-                    <p>${renderSimilarMovies(details)}</p>
+                    <ul id="similarMovies">${renderSimilarMovies(details)}</ul>
                 </div>
                 <div class="custom-dialog__reviews-tab">
-                    <p>${renderReviews(details)}</p>
+                    <ul id="reviewsMovies">${renderReviews(details)}</ul>
                 </div>
             </div>
             <div
@@ -95,28 +93,33 @@ export const showTab = (e) => {
 
 const renderTrailer = (details) => {
     if (details && details.trailers && details.trailers.youtube) {
-        return  details.trailers.youtube.map(trailer =>{
-            return html`    
-            <li>                    
+        const trailer = details.trailers.youtube[0];
+        if (trailer){
+            return html`
+            <div class="video-container">                     
                 <iframe 
                     src="https://www.youtube.com/embed/${trailer && trailer.source}?origin=http://example.com" 
                     class="trailer" 
                     type="text/html" 
-                    width="150" 
-                    height="150"
+                    width="300" 
+                    height="300"
                     frameborder="0">
-                </iframe>   
-            <li>`;
-        });
+                </iframe> 
+            </div>  `;
+            
+        } else {
+            return html`<div class="custom-dialog__title">No trailers found for this movie.</div>`
+        }
+
     } 
 }
 
 
 const renderReviews = (details) => {
     if (details && details.reviews && details.reviews.results) {
-        return  details.reviews.results.map( review =>{
+        return  details.reviews.results.slice(0,2).map( review =>{
             return html`    
-            <li>                    
+            <li class="review__container">
                 <span class="review__author">${review && review.author} </span>
                 <span class="review__content">${review && review.content} </span>
             <li>`;
@@ -126,13 +129,13 @@ const renderReviews = (details) => {
 
 const renderSimilarMovies = (details) => {
     if (details && details.similar && details.similar.results) {
-        return  details.similar.results.map( movie =>{
+        return details.similar.results.slice(0,3).map( movie =>{
             return html`    
-            <li><div class="similar__movie" style="background-image:url(http://image.tmdb.org/t/p/w300${movie && movie.poster_path}" >                    
-                <span class="similar__title">${movie && movie.original_title} </span>
-                <span class="similar__date">${movie && movie.release_date && movie.release_date.substring(0, 4)} </span>
-                <span class="similar__title">${movie && movie.vote_average + '/10'} </span>
-                <span class="similar__title">${movie && movie.overview} </span>
+            <li class="similar__movie" style="background-image:url(http://image.tmdb.org/t/p/w300${movie && movie.poster_path}">
+                <div class="similar__movie--container">                 
+                    <span class="similar__title">${movie && movie.original_title} </span>
+                    <span class="similar__date">${movie && movie.release_date && movie.release_date.substring(0, 4)} </span>
+                    <span class="similar__title--vote">${movie && movie.vote_average + '/10'} </span>
                 </div>
             <li>`;
         });

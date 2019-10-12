@@ -83,9 +83,11 @@ const applyColorToHeader = className => {
         if (rootElement.classList.contains(className))
             rootElement.classList.remove(className);
         if (form.classList.contains("md-light"))
+            form.classList.add("md-cyan");
             form.classList.remove("md-light");
     } else if (getScrollTop() > 15) {
         rootElement.classList.add(className);
+        form.classList.remove("md-cyan");
         form.classList.add("md-light");
         
     }
