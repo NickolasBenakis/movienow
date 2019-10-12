@@ -16,12 +16,15 @@ export const dialogTemplate = (
             class="mdl-dialog custom-dialog"
             style="background-size:cover;background-attachment:fixed;background-image:${image}"
         >
-            <div class="custom-dialog__close" @click=${handleClose}>
+            <div
+                class="mdl-cell--12-col custom-dialog__close"
+                @click=${handleClose}
+            >
                 <span class="custom-dialog__close__icon-container">
                     <i class="material-icons md-light md-48 close">close </i>
                 </span>
             </div>
-            <div class="custom-dialog__tabs md-light">
+            <div class="mdl-cell--12-col custom-dialog__tabs md-light">
                 <span class="overview active" @click=${showTab}>Overview</span>
                 <span class="trailer" @click=${showTab}>Trailer</span>
                 <span class="similar" @click=${showTab}>Similar</span>
@@ -121,50 +124,77 @@ const renderTrailer = details => {
 
 const renderReviews = details => {
     if (details && details.reviews && details.reviews.results) {
-        return details.reviews.results.slice(0, 2).map(review => {
+        const reviews = details.reviews.results.slice(0, 2);
+        if (reviews.length === 1) {
+            return reviews.map(review => {
+                return html`
+                    <li class="review__container" id="single-content">
+                        <span class="review__author"
+                            >By ${review && review.author}
+                        </span>
+                        <span class="review__content"
+                            >"${review && review.content}"
+                        </span>
+                    </li>
+                `;
+            });
+        } else if (reviews.length === 2) {
+            return reviews.map(review => {
+                return html`
+                    <li class="review__container">
+                        <span class="review__author"
+                            >By ${review && review.author}
+                        </span>
+                        <span class="review__content"
+                            >"${review && review.content}"
+                        </span>
+                    </li>
+                `;
+            });
+        } else {
             return html`
-                <li class="review__container">
-                    <span class="review__author"
-                        >${review && review.author}
-                    </span>
-                    <span class="review__content"
-                        >${review && review.content}
-                    </span>
-                </li>
-
-                <li></li>
+                <div class="custom-dialog__title">
+                    No trailers found for this movie.
+                </div>
             `;
-        });
+        }
     }
 };
 
 const renderSimilarMovies = details => {
     if (details && details.similar && details.similar.results) {
-        return details.similar.results.slice(0, 3).map(movie => {
+        const similars = details.similar.results.slice(0, 2);
+        if (similars.length) {
+            return similars.map(movie => {
+                return html`
+                    <li
+                        class="similar__movie"
+                        style="background-image:url(http://image.tmdb.org/t/p/w300${movie &&
+                            movie.poster_path}"
+                    >
+                        <div class="similar__movie--container">
+                            <span class="similar__title"
+                                >${movie && movie.original_title}
+                            </span>
+                            <span class="similar__date"
+                                >${movie &&
+                                    movie.release_date &&
+                                    movie.release_date.substring(0, 4)}
+                            </span>
+                            <span class="similar__title--vote"
+                                >${movie && movie.vote_average + '/10'}
+                            </span>
+                        </div>
+                    </li>
+                `;
+            });
+        } else {
             return html`
-                <li
-                    class="similar__movie"
-                    style="background-image:url(http://image.tmdb.org/t/p/w300${movie &&
-                        movie.poster_path}"
-                >
-                    <div class="similar__movie--container">
-                        <span class="similar__title"
-                            >${movie && movie.original_title}
-                        </span>
-                        <span class="similar__date"
-                            >${movie &&
-                                movie.release_date &&
-                                movie.release_date.substring(0, 4)}
-                        </span>
-                        <span class="similar__title--vote"
-                            >${movie && movie.vote_average + '/10'}
-                        </span>
-                    </div>
-                </li>
-
-                <li></li>
+                <div class="custom-dialog__title">
+                    No trailers found for this movie.
+                </div>
             `;
-        });
+        }
     }
 };
 

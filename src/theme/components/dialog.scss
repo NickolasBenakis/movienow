@@ -17,11 +17,8 @@
     box-shadow: 0 1.5rem 4rem rgba(23, 24, 24, 0.15);
 
     &__close {
-        position: absolute;
-        right: 0;
-        top: 0;
-        font-size: 3rem;
-        padding: 0.5rem;
+        float: right;
+        text-align: right;
         cursor: pointer;
         z-index: 1;
         color: $black;
@@ -30,22 +27,24 @@
             background: transparent;
             opacity: 1;
             display: inline-block;
-            border-radius: 2.5rem;
-
+            color: $gray;
+            border-radius: 3.5rem;
+            width: 50px;
+            padding: 1rem;
+            &:hover {
+                color: $gray;
+                background: $gray;  
+            }
             .close {
-                &:hover {
-                    color: $gray;
-                }
+                vertical-align: middle;
             }
         }
     }
 
     &__container {
         background: linear-gradient(90deg, #000 50%, transparent);
-        width: 50%;
         padding-top: 3rem;
         height: 100%;
-        padding-left: 5rem;
 
         @media only screen and (max-width: 74em) {
             background: linear-gradient(
@@ -110,11 +109,10 @@
         margin: 0 auto;
         display: flex;
         justify-content: center;
-        padding: 0 1rem;
 
         span {
             font-size: 1.8rem;
-            margin: 0 3rem 0 0;
+            margin: 0 1rem;
             cursor: pointer;
             color: $gray;
 
@@ -132,7 +130,10 @@
     &__overview {
         font-size: 1.4rem;
         padding: 0 8px;
-        width: 50vw;
+        width: 70vw;
+        display: block;
+        overflow: scroll;
+        height: 20vh;
     }
 
     &__overview-tab,
@@ -186,7 +187,6 @@
     flex-wrap: wrap;
     width: 100%;
     padding-left: 0;
-    padding-top: 2rem;
 
     li {
         margin: 1rem;
@@ -215,12 +215,16 @@
 .similar {
     &__movie {
         height: 300px;
-        width: 25%;
+        // width: 44%;
         margin: 1rem;
+        width: 300px;
 
-        @media only screen and (max-width: 37.5em) {
-            width: 15%;
+        @media only screen and (max-width: 37.5rem) {
+            width: 35%;
         }
+        // @media (min-width: 77rem) {
+        //     width: 34%;
+        // }
     }
 
     &__movie--container {
@@ -231,6 +235,7 @@
         overflow: scroll;
         cursor: pointer;
         padding: 0.5rem;
+        background: $blackCover;
     }
 
     &__title--vote {
@@ -244,25 +249,19 @@
         margin: 1rem;
         overflow: scroll;
         width: 45%;
-
-        @media only screen and (max-width: 37.5em) {
-            width: 25%;
-        }
-
-        @media (max-width: 97.5em) {
-            width: 30%;
-        }
     }
 
     &__author {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         color: $white;
         display: block;
+        padding: 1.5rem;
     }
 
     &__content {
-        font-size: 1.2rem;
-        padding: 8px 8px 24px;
+        font-size: 1.4rem;
+        padding: 1.5rem;
+        display: block;
         color: $gray;
     }
 }
@@ -282,19 +281,23 @@
 // }
 
 .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 0;
-    height: 0;
+    height: 40vh;
+    width: 100%;
     overflow: hidden;
+    @media only screen and (max-width: 40em) {
+        height: 30vh;
+    }
 }
+
 
 .video-container iframe,
 .video-container object,
 .video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+
+    width: 95vw;
     height: 100%;
+}
+
+#single-content {
+    width: 60%;
 }
