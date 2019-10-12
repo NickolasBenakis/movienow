@@ -1,6 +1,6 @@
 {
-    "name": "Movierama – Movie catalog",
-    "short_name": "movierama",
+    "name": "Movienow – Movie catalog",
+    "short_name": "movienow",
     "icons": [
         {
             "src": "./theme/assets/video-play-64.png",

@@ -70,14 +70,19 @@ export const dialogTemplate = (
 };
 export const handleClose = () => {
     const dialog = document.querySelector('.custom-dialog');
+    const main = document.getElementById('main-content');
+
     dialog.querySelector('.close').addEventListener('click', function() {
         dialog.classList.remove('is-open');
+        main.classList.remove('is-open');
     });
 };
 
 export const handleExpand = () => {
     const dialog = document.querySelector('.custom-dialog');
+    const main = document.getElementById('main-content');
     dialog.classList.add('is-open');
+    main.classList.add('is-open');
 };
 
 export const showTab = e => {
