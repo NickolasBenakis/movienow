@@ -130,9 +130,9 @@ const renderTrailer = details => {
 const renderReviews = details => {
     if (details && details.reviews && details.reviews.results) {
         const reviews = details.reviews.results.slice(0, 2);
-        if (reviews.length === 1) {
-            return reviews.map(review => {
-                return html`
+        if (reviews.length) {
+            const review = reviews[0];
+            return html`
                     <li class="review__container" id="single-content">
                         <span class="review__author"
                             >By ${review && review.author}
@@ -140,22 +140,7 @@ const renderReviews = details => {
                         <span class="review__content"
                             >"${review && review.content}"
                         </span>
-                    </li>
-                `;
-            });
-        } else if (reviews.length === 2) {
-            return reviews.map(review => {
-                return html`
-                    <li class="review__container">
-                        <span class="review__author"
-                            >By ${review && review.author}
-                        </span>
-                        <span class="review__content"
-                            >"${review && review.content}"
-                        </span>
-                    </li>
-                `;
-            });
+                    </li>`
         } else {
             return html`
                 <div class="custom-dialog__title">
