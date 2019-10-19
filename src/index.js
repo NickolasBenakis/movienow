@@ -107,6 +107,7 @@ const appRouter = async () => {
             break;
         case 'search':
             document.getElementById(state.section).style.display = 'flex';
+            document.getElementById(state.section).style.height = '100vmax';
             const input = document.getElementById('searchBar');
             form.classList.add('is-form-visible');
             input.addEventListener(
