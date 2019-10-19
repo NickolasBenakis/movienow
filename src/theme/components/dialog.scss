@@ -77,9 +77,17 @@
         word-wrap: break-word;
         padding: 2rem 2rem 0 0;
         width: 92vw;
+
+        @media screen and (max-width:600px){
+            display: none;
+        }
     }
 
     &__meta {
+
+        @media screen and (max-width:600px){
+            display: none;
+        }
         &__year {
             font-size: 1.6rem;
             padding: 0 8px;
@@ -96,6 +104,10 @@
         font-size: 1.6rem;
         padding: 0 8px;
         white-space: normal;
+
+        @media screen and (max-width:600px){
+            display: none;
+        }
     }
 
     &__tabs {
@@ -136,7 +148,7 @@
         height: 15vh;
 
         @media (max-width: 600px) {
-            width: 85vw;
+            width: 90vw;
         }
     }
 
