@@ -1,6 +1,5 @@
 'use strict';
 const staticCacheName = 'cacheV1';
-//const offlineCache = "offline";
 const filesToCache = [
     './vendor/material.indigo-pink.min.css',
     './vendor/material.min.js',
@@ -39,7 +38,6 @@ self.addEventListener('install', function(event) {
 // })
 
 self.addEventListener('fetch', event => {
-    //console.log('Fetch event for ', event.request.url);
     event.respondWith(
         caches
             .match(event.request)
