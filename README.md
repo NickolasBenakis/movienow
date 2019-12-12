@@ -28,7 +28,7 @@ To install, `cd` to project root and run:
 ```
 $ npm install
 ```
-This will install the required Babel and Weback dependencies. From there, you can build or run the app.
+This will install the required Babel and Webpack dependencies. From there, you can build or run the app.
 
 ## Build
 To build for production, `cd` to project root and run:
